@@ -4,8 +4,13 @@
 - `1.) 데이터수집_postgre.ipynb` : 데이터 수집용 쥬피터 노트북
 - `2.) 학습데이터_구축_postgre.ipynb` : 학습용 데이터 정제
 - `3.) 학습모델구축.ipynb` : 모델링 및 학습 
-- `4.) 임시라벨링_데이터점검.ipynb` : 라벨링 및 검토
+- `4.) 임시라벨링_데이터점검.ipynb` : 학습모델 기반 라벨링 및 검토
 - `5.) RecipeAI.ipynb` : 최적 생성조건 데이터 생성
+- `prediction_점검용.ipynb` : 추론 점검용
+- `prediction.py` : 추론 API 탑재용 py
+- `memae.py` : Memory Augmented AutoEncoder Custom 함수
+- `main.py` : 추론용 FastAPI
+- `predictionAPI.bat` : 실시간 추론 FastAPI BAT
 
 ---
 
@@ -39,7 +44,7 @@
 ### 주요 전처리 
   - 1.) 설비/품목/1일 Lot생산단위 불량률 계산
     
-    <img width="1273" height="531" alt="그림1" src="https://github.com/user-attachments/assets/137fb13a-177d-4add-8443-98f7abe4f377" />
+    <img width="1000" height="500" alt="그림1" src="https://github.com/user-attachments/assets/137fb13a-177d-4add-8443-98f7abe4f377" />
 
   - 2.) Setting 데이터 구분
 
@@ -58,11 +63,13 @@
 
 ---
 
-### 주요 전처리 
+### 학습 프로세스  
 
-  - 1.) 총불량률 <1.0%인 [Facility-Item-Setting] 데이터 학습 / 총불량률 >=1.0 검증
+   - 1.) 총불량률 <1.0%인 [Facility-Item-Setting] 데이터 학습 / 총불량률 >=1.0 검증
 
-  - 2.) 학습 데이터 개수에 따른 학습모델 선택
+       → Lot 불량률 0.0% --> 1.0% 기준 완화로 정상품질에 대한 과적합 사전 방지 & 학습 유연성 부여 
+
+   - 2.) 학습 데이터 개수에 따른 학습모델 선택
 
        → IsolationForest, AutoEncoder, Memory Augmented AutoEncoder
 
@@ -70,11 +77,41 @@
 
        <img width="450" height="400" alt="image" src="https://github.com/user-attachments/assets/52b96386-97fd-439a-9f30-c39a8ad1529c" />
 
+---
+
+### 실시간 추론 프로세스  
+
+  - 1.) 기본 추론 ( 학습이력이 있는 설비/품목의 정보 )
+
+       → 학습모델 업로드
+
+       → Trained Reconstruction MAE Loss 분포의 변동계수(Coefficient of Variance)로 임계값에 가중치 & Margin Limit 부여 ( 과적합 방지 & 추론 유연성 부여 )
+
+    <img width="343" height="150" alt="화면 캡처 2025-07-28 135612" src="https://github.com/user-attachments/assets/2d0c0c99-271e-4665-8bee-0b73e0742804" />
 
 
+  - 1.) 적응형 추론 ( 학습이력이 없는 설비/품목의 정보 )
+
+       → 학습했던 다변량 Setting 조합 Dictionary중 현재 수집데이터의 Setting조합과 최근접 정보 탐색 ( Euclidean Distance)
+
+       → 최근접 정보 기반 대체 추론용 학습모델 선택
+
+       → Trained Reconstruction MAE Loss 분포의 변동계수(Coefficient of Variance) & Setting Euclidean Distance로 임계값에 가중치 & Margin Limit 부여 ( 과적합 방지 & 추론 유연성 부여 )
+
+     <img width="343" height="150" alt="화면 캡처 2025-07-28 135636" src="https://github.com/user-attachments/assets/d5b4d90f-fbd6-41b6-a3e9-3effbe15f910" />
+
+---
+
+### 최적 생산 Setting조건 추천  
+
+  - 1.) 기존 학습모델의 임계값 추론 기반으로 학습데이터 임시라벨링 부여 (예측 기반 라벨링)
+
+  - 2.) 각 설비 & 품목 생산정보 중 최다 생산 이력 / 최소 예측불량률 이력을 가진 Cluster Setting정보 정리
+
+  - 3.) Unique Setting 정보 & 해당 Setting으로 생산한 Production Data들의 Min/Mean/Max 제공
 
 
-
+    <img width="343" height="269" alt="화면 캡처 2025-07-28 142443" src="https://github.com/user-attachments/assets/f23eb847-09cd-4145-b6d5-c20adceb846d" />
 
 
 

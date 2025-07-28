@@ -37,9 +37,7 @@
   
    → 개별 데이터의 Good/Bad Qty의 수치는 총생산량 기반으로 기록 (개별 데이터의 품질 의미 X)
 
-- 2.) Setting 기반 데이터 분포 차이
-  
-   → 동일 설비 & 품목일지라도 다변량 Production(Sensing)은 공정의 Unique Setting 집합에 따라서 분포의 차이를 나타냄
+- 2.) Setting 기반 데이터 분포 조합에 따라서 분포의 차이를 나타냄
      
 ---
 
@@ -120,7 +118,8 @@
   - 3.) Unique Setting 정보 & 해당 Setting으로 생산한 Production Data들의 Min/Mean/Max 제공
 
 
-    <img width="343" height="269" alt="화면 캡처 2025-07-28 142443" src="https://github.com/user-attachments/assets/f23eb847-09cd-4145-b6d5-c20adceb846d" />
+    <img width="343" height="269" alt="그림4" src="https://github.com/user-attachments/assets/5b042c74-0732-41f2-8c70-b8fc7dd56a1f" />
+
 
 
 

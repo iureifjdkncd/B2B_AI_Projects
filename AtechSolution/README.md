@@ -29,7 +29,7 @@
 ---
 
 ### 문제 정의
-- 1.) 사출 생산데이터의 1대1 라벨링 부재
+- 1.) Postgre Raw 사출 생산데이터의 1대1 라벨링 부재
   
    → 데이터의 1일 Lot단위 생산 특징
   
@@ -83,7 +83,14 @@
 
 ### 실시간 추론 프로세스  
 
-  - 1.) 기본 추론 ( 학습이력이 있는 설비/품목의 정보 )
+  - 1.) 실시간 MongoDB 수집 데이터 품질 검토
+
+       → 결측 정보(Ex. 품목 , Production, Setting) Forward/Backward/Mean/Mode Fill
+
+       → 정보 결함으로 인한 예외처리 방지 
+
+
+  - 2.) 기본 추론 ( 학습이력이 있는 설비/품목의 정보 )
 
        → 학습모델 업로드
 
@@ -92,7 +99,7 @@
     <img width="343" height="150" alt="화면 캡처 2025-07-28 135612" src="https://github.com/user-attachments/assets/2d0c0c99-271e-4665-8bee-0b73e0742804" />
 
 
-  - 1.) 적응형 추론 ( 학습이력이 없는 설비/품목의 정보 )
+  - 3.) 적응형 추론 ( 학습이력이 없는 설비/품목정보 )
 
        → 학습했던 다변량 Setting 조합 Dictionary중 현재 수집데이터의 Setting조합과 최근접 정보 탐색 ( Euclidean Distance)
 

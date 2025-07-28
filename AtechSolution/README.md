@@ -44,7 +44,7 @@
 ### 주요 전처리 
   - 1.) 설비/품목/1일 Lot생산단위 불량률 계산
     
-    <img width="1000" height="500" alt="그림1" src="https://github.com/user-attachments/assets/137fb13a-177d-4add-8443-98f7abe4f377" />
+    <img width="700" height="250" alt="그림1" src="https://github.com/user-attachments/assets/137fb13a-177d-4add-8443-98f7abe4f377" />
 
   - 2.) Setting 데이터 구분
 
@@ -118,7 +118,8 @@
   - 3.) Unique Setting 정보 & 해당 Setting으로 생산한 Production Data들의 Min/Mean/Max 제공
 
 
-    <img width="343" height="269" alt="그림4" src="https://github.com/user-attachments/assets/5b042c74-0732-41f2-8c70-b8fc7dd56a1f" />
+    <img width="1599" height="455" alt="그림4" src="https://github.com/user-attachments/assets/18c411e5-9e66-4d15-b073-d22f9d167a46" />
+
 
 
 

@@ -132,7 +132,12 @@
 
   - 1.) 실시간 100개 데이터 MongoDB 조회 시 품질들의 표준편차 & 가장 최근 품질값 / 목표 품질값 정의  
 
- <img width="500" height="100" alt="image" src="https://github.com/user-attachments/assets/fd4fb9a4-0fa0-4370-96f3-9b3b0d02f88b" />
+     <img width="500" height="100" alt="image" src="https://github.com/user-attachments/assets/fd4fb9a4-0fa0-4370-96f3-9b3b0d02f88b" />
+
+  - 2.) 목표값 기반 최근사 예측값 정의 
+
+<img width="1548" height="511" alt="image" src="https://github.com/user-attachments/assets/6393e371-eb29-4752-a36a-93df0f6be041" />
+
 
 
 ---

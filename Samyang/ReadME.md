@@ -136,7 +136,7 @@
 
   - 2.) 목표값 기반 최근사 예측값 정의 
 
-<img width="1548" height="511" alt="image" src="https://github.com/user-attachments/assets/6393e371-eb29-4752-a36a-93df0f6be041" />
+     <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/6393e371-eb29-4752-a36a-93df0f6be041" />
 
 
 

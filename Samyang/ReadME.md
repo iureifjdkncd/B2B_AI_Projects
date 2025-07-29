@@ -142,7 +142,11 @@
 
   - 3.) 목표값 기반 최근사 예측값 기반 최적 과거 공정조건 탐색
 
-     <img width="1000" height="319" alt="image" src="https://github.com/user-attachments/assets/2719e071-d3b5-472c-addc-55d24a743e6c" />
+     <img width="1000" height="300" alt="image" src="https://github.com/user-attachments/assets/2719e071-d3b5-472c-addc-55d24a743e6c" />
+
+     <img width="1000" height="200" alt="image" src="https://github.com/user-attachments/assets/f409db70-77ce-436e-9de7-5c0300569361" />
+
+
 
 ---
 

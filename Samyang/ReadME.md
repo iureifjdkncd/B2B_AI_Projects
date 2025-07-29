@@ -109,6 +109,7 @@
 
        → 전체 데이터(Recipe Full) & 특정 공정조건 Min/Max Filtering 적용한 데이터 정의(Recipe Info)
 
+
   - 2.) 실시간 최근(마지막 행) 입력데이터 활용 기반 Recipe Data 정보 분리 (df_origin / df_cluster)
 
        → Recipe Info기준 현재와 동일 원산지 정보 가진 데이터 필터링 (df_origin)
@@ -118,6 +119,7 @@
        → 현재 입력정보에 대한 예측 군집에 해당하는 부분 데이터 df_origin에서 선택 (df_cluster)
 
     (개수 기준 미달 시 현재 군집 제외 df_origin에서 최근접 군집데이터 선택 )
+
 
 
   - 3.) df_origin & df_cluster 기준 목표 대비 최근사 예측값 집합에 대응하는 최적 공정조건 출력

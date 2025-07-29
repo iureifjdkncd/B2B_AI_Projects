@@ -90,7 +90,9 @@
 
   - 2.) 기본 추론 ( 학습이력이 있는 설비/품목의 정보 )
 
-       → 학습모델 업로드 & 학습된 mae loss 정보 기준으로 MinMaxScaler(clip=True)로 예측용 데이터 정규화값 발산 방지 
+       → 학습모델 업로드
+
+       → 학습된 mae loss 정보 기준으로 MinMaxScaler(clip=True)로 예측용 데이터 정규화값 발산 방지 
 
        → Trained Reconstruction MAE Loss 분포의 변동계수(Coefficient of Variance)로 임계값에 가중치 & Margin Limit 부여 ( 과적합 방지 & 추론 유연성 부여 )
 
@@ -101,7 +103,9 @@
 
        → 학습했던 다변량 Setting 조합 Dictionary중 현재 수집데이터의 Setting조합과 최근접 정보 탐색 ( Euclidean Distance)
 
-       → 최근접 정보 기반 대체 추론용 학습모델 선택 학습된 mae loss 정보 기준으로 MinMaxScaler(clip=True)로 예측용 데이터 정규화값 발산 방지
+       → 최근접 정보 기반 대체 추론용 학습모델 선택
+
+       → 학습된 mae loss 정보 기준으로 MinMaxScaler(clip=True)로 예측용 데이터 정규화값 발산 방지
 
        → Trained Reconstruction MAE Loss 분포의 변동계수(Coefficient of Variance) & Setting Euclidean Distance로 임계값에 가중치 & Margin Limit 부여 ( 과적합 방지 & 추론 유연성 부여 )
 

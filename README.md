@@ -20,7 +20,7 @@
   
     → 새로운 정보(학습이력X)에 대한 유사 학습모델 대체 추론 (현재 수집데이터와 최근접 Setting정보 가진 학습모델 활용)
    
-    → 추론 임계값 유연성 부여  (Trained MAE Reconstuction Dist & Setting Euclidean Dist 통계량 활용
+    → 추론 임계값 유연성 부여  (Trained MAE Reconstuction Dist & Setting Euclidean Dist 통계량 활용)
    
     → 학습모델 기반 개별 학습데이터 임시라벨링 부여 & 각 설비/품질 당 최다 생산 및 최소 예측불량률을 가진 Production 통계량/Unique Setting조합 추천용 데이터 구축 
    

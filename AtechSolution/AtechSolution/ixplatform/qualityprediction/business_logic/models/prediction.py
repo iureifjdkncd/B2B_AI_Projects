@@ -37,7 +37,7 @@ warnings.filterwarnings(action='ignore')
 modelBasePath = 'business_logic/models'
 
 def get_mongo_data(db_name,collection_name):
-    server_address = "192.168.160.199:15115"
+    server_address = "private_server_address"
     client_update = MongoClient("mongodb://private_client@{0}/admin".format(server_address))
     db = client_update[db_name]
     col = db[collection_name]

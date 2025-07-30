@@ -71,7 +71,7 @@
 
    - 2.) 학습 데이터 개수에 따른 학습모델 선택
 
-       → IsolationForest, AutoEncoder, Memory Augmented AutoEncoder (AE계열 Early Stopping & Best Weight 활용)
+       → IsolationForest, AutoEncoder, Memory Augmented AutoEncoder ( AE계열 Early Stopping & Best Weight 활용 )
 
        → Ex.) 특정 (설비/품목/Setting Cluster)의 분리학습 
 

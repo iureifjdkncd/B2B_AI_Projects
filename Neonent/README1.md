@@ -30,11 +30,11 @@
 ---
 
 ### 문제 정의
-- 1.) 사출기 6대에 대한 품질 분석 
+- 1.) 사출기 다수수에 대한 품질 분석 
 
 - 2.) 사출기 점검/ 수집 / Labeling 측정 방식 문제 발생으로 기존 학습/추론방식 활용 불가 이슈
 
-   → 기존 사출+PLC데이터 활용 지도학습에서 사출데이터만 활용한 비지도학습 변경
+   → 기존 사출+PLC데이터 활용한 지도학습에서 사출데이터만 활용한 비지도학습 변경
  
 ---
 
@@ -79,13 +79,13 @@
      
    - 2.) 기본 예측 (Fixed Prediction)
 
-       → 실시간 특정 사출기의 Unique_Num_Cavity(Working_No)에 해당하는 데이터 AE기반 예측 
+       → 실시간 특정 사출기의 1개 Unique_Num_Cavity(Working_No)에 해당하는 데이터는 AE의 고정임계값 기반 예측 
 
    - 3.) Distribution Adaptable Prediction
 
        → 실시간 특정 사출기에서 N개 데이터 수집 & AE모델 예측기반 test_mae_loss 집합 계산
 
-       → Test_Mae_loss집합의 KDE분포 생성 & KDE기반 Quantile기준으로 임계값 계산
+       → Test_Mae_loss집합의 KDE분포 생성 & KDE기반 Quantile기준으로 불량예측용 임계값 계산
 
        → Test_Mae_loss집합의 mae_loss/anomaly여부/pred결과/threshold 통합 정보 출력
 

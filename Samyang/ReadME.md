@@ -74,7 +74,7 @@
 
        → 공정 일련 프로세스에 대해서 100개씩 조회 & 용도에 맞게 데이터 형태 정의  
 
-  - 2.) 각 품질 예측값 KDE Ensemble & 품질 범위 정량화 (Data Drift Robustness 목표)
+  - 2.) 각 학습모델 기반 품질 예측값 KDE Ensemble & 품질 범위 정량화 (Data Drift Robustness 목표)
 
        → 점추정/확률 추정 결과들의 Min/Mean/Max 특징들로 KDE 모수 지정 & 분포 생성
 

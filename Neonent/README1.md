@@ -54,10 +54,21 @@
 ---
 
 ### 학습 프로세스  
-   - 1측
+   - 1.) 실시간 MongoDB 수집
+
+       → 각 사출기당 N개 데이터 실시간 수집
+     
+       → N Cavity = 1Shot형식으로 변경 X 
+
+   - 2.) 기본 예측 (Fixed Prediction)
+
+   - 3.) Distribution Adaptable Prediction
+
+
+   - 3.) Hybrid Anomaly Detection System 구축 
 
        → Fixed=Normal / Adaptable=False 결과 발생 시 마지막 20개 데이터 예측 결과의 정상비율 기반으로 최종 품질 예측
-
+        
    - 5.) Recheck Anomalies Process
      
        → 각 사출기당 실시간 N개 수지된 데이터의 Test_MAE_Loss 분포의 공정능력지수(CP,CPK) 계산

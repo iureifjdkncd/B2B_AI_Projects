@@ -4,7 +4,7 @@
 - `1.) ML유량예측모델.ipynb` : 포충1,2탑 ML공급유량 예측
 - `2.) FL_BRIX예측모델.ipynb` : FL_BRIX 농도 예측
 - `3.) 실시간 추론 작업형.ipynb` : 추론 점검용  
-- `main.py` : 추론용 FastAPI
+- `main.ipynb` : 추론용 FastAPI
 
 ---
 

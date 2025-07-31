@@ -38,36 +38,40 @@
    → 개별 데이터의 Good/Bad Qty의 수치는 총생산량 기반으로 기록 (개별 데이터의 품질 의미 X)
 
 - 2.) Setting 기반 데이터 분포 조합에 따라서 분포의 차이를 나타냄
-     
+
+   → 각 maker당 동일 설비/품목은 여러 날짜(Lot)별로 1개 혹은 다수의 Setting에 의해 생산 진행
+  
 ---
 
 ### 주요 전처리 
   - 1.) 설비/품목/1일 Lot생산단위 불량률 계산
+
+     → 1대1 라벨링이 아닌 생산다위별로 정상/불량 정보 거시적으로 파악하여 최소한 학습가능한 데이터 선별 
     
     <img width="700" height="250" alt="그림1" src="https://github.com/user-attachments/assets/137fb13a-177d-4add-8443-98f7abe4f377" />
 
-  - 2.) Setting 데이터 구분
+  - 2.) Setting 데이터 구분 프로세스 구축 
 
       → 다변량 Setting데이터의 Unique조합 계산 (Drop Duplicates)
     
-      → K-Means Clustering을 통한 고유 Setting 조합에 대한 Numbering 부여
+      → K-Means Clustering학습으로 고유 Setting 조합에 대한 Numbering 부여
 
-      → 동일 설비/품목은 여러 날짜(Lot)별로 1개 혹은 다수의 Setting에 의해 생산 진행
+      → 3개의 maker에서 각 Facility-Item-Setting에 대한 정보 구분
 
     <img width="296" height="326" alt="화면 캡처 2025-07-28 131912" src="https://github.com/user-attachments/assets/bf60ecc7-8386-4bb4-aa06-07dd19738e8e" />
-
-  - 3.) Lot단위 불량률 & 고유 Setting 정보 정량화 기반 학습데이터 완성 
-
-     <img width="1918" height="475" alt="그림3" src="https://github.com/user-attachments/assets/b9ad7c9d-e64c-4d7f-ba4e-d368b5caf8a0" />
-
 
 ---
 
 ### 학습 프로세스  
+   - 1.) Lot단위 불량률 & 고유 Setting 정보 정량화 기반 학습데이터 완성
 
-   - 1.) 총불량률 <1.0%인 [Facility-Item-Setting] 데이터 학습 / 총불량률 >=1.0 검증
+       → 총불량률 <1.0%인 [Facility-Item-Setting] 데이터 학습 / 총불량률 >=1.0 검증
+     
+       → Lot 불량률 0.0% --> 1.0% 기준 완화로 정상품질에 대한 과적합 사전 방지 & 학습 유연성 부여
 
-       → Lot 불량률 0.0% --> 1.0% 기준 완화로 정상품질에 대한 과적합 사전 방지 & 학습 유연성 부여 
+       → Lot 불량률 1.0% 미만인 Facility-Item-Setting정보 구분된 데이터 중 500개 미만은 학습에서 제거
+
+     <img width="1918" height="475" alt="그림3" src="https://github.com/user-attachments/assets/b9ad7c9d-e64c-4d7f-ba4e-d368b5caf8a0" />
 
    - 2.) 학습 데이터 개수에 따른 학습모델 선택
 
@@ -88,18 +92,21 @@
        → 정보 결함으로 인한 예외처리 방지 
 
 
-  - 2.) 기본 추론 ( 학습이력이 있는 설비/품목의 정보 )
+  - 2.) 기본 추론 ( 학습이력이 있는 정보 )
 
-       → 학습모델 업로드
+       → 현재 Setting의 Cluster예측 & 해당 Cluster가 속한 학습된 Facility/ITem정보 활용
+    
+       → 해당 학습모델 업로드
 
        → 학습된 mae loss 정보 기준으로 MinMaxScaler(clip=True)로 예측용 데이터 정규화값 발산 방지 
 
-       → Trained Reconstruction MAE Loss 분포의 변동계수(Coefficient of Variance)로 임계값에 가중치 & Margin Limit 부여 ( 과적합 방지 & 추론 유연성 부여 )
+       → Trained Reconstruction MAE Loss 분포의 변동계수(Coefficient of Variance)로 임계값에 가중치 & Margin Limit 부여
+    ( 과적합 방지 & 추론 유연성 부여 )
 
     <img width="343" height="150" alt="화면 캡처 2025-07-28 135612" src="https://github.com/user-attachments/assets/2d0c0c99-271e-4665-8bee-0b73e0742804" />
 
 
-  - 3.) 적응형 추론 ( 학습이력이 없는 설비/품목정보 )
+  - 3.) 적응형 추론 ( 학습이력이 없거나 기존 학습불가 Setting Cluster 정보 )
 
        → 학습했던 다변량 Setting 조합 Dictionary중 현재 수집데이터의 Setting조합과 최근접 정보 탐색 ( Euclidean Distance)
 

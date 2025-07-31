@@ -72,6 +72,7 @@
 
 ---
 ### 실시간 추론 프로세스  
+
    - 1.) 실시간 MongoDB 수집
 
        → 각 사출기당 N개 데이터 실시간 수집 & N Cavity = 1Shot형식으로 변경 X상태로 그대로 개별 예측 방식 적용 
@@ -90,11 +91,11 @@
 
        → Test_Mae_Loss 중 마지막 20개 & Unique_Num(Working_No)에 해당하는 예측 결과 출력 
        
+   - 4.) Hybrid Anomaly Detection System 구축
 
+       → N개 Test_mae_loss에 대한 KDE분포의 안정성 Custom 계산 (CV,Skew,Kurtosis 종합)
 
-   - 3.) Hybrid Anomaly Detection System 구축
-
-   - 
+       → Stable=False 시 Fixed Prediction 단독 / Stable=True 시 Fixed & Adaptable 혼용 기반 품질 예측 
 
        → Fixed=Normal / Adaptable=False 결과 발생 시 마지막 20개 데이터 예측 결과의 정상비율 기반으로 최종 품질 예측
         

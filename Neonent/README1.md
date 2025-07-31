@@ -98,7 +98,7 @@
 
        → Test_MAE_Loss값 기반 KDE분포 생성/임계값 Quantile 재계산으로 N개 데이터 개별 품질 예측 수행
 
-       → 마지막 20개 데이터 대상 & 현재 입력대상 Unique_Num(Working_No)에 해당하는 데이터 품질 예측 결과 출력
+       → 마지막 20개 데이터  & 현재 Unique_Num(Working_No)에 해당하는 데이터 품질 예측 결과 출력
 
 
    - 4.) Hybrid Anomaly Detection System

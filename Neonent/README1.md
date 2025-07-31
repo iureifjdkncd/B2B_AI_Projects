@@ -54,58 +54,7 @@
 ---
 
 ### 학습 프로세스  
-   - 1.) 지도학습 모델 구축 (기존)
-
-       → 각 사출기마다 사출+PLC데이터 결합
-     
-       → Train Normal Data에서 IsolationForest 활용한 소수 이상치 제거 
-
-       → Train/Test 각각 UnderSampling & 이후 Train OverSampling 진행으로 정상/불량 특징 가중치 비율 조정
-
-       → Tree기반 ML모델 및 Stacking Classifier 구축 (예측 그림 추가)
-
-
-   - 2.) 비지도학습 모델 구축 (변경)
-
-       → 데이터 수집 방식 & Labeling 측정 문제 발생 ( Ex. 데이터 수집 10,000개당 불량 100개 미만 or 입력 X)
-
-       → N Cavity= 1 Shot 형식 변환 이후 Normal데이터(N Cavity 불량률=0.0%) 대상으로 Basic AutoEncoder 적용 (예측 그림 추가)
-
-      
----
-
-### 실시간 추론 프로세스  
-
-  - 1.) 실시간 MongoDB 수집 데이터 수집
-
-       → 추론 단계에서는 변경된 수집방식인 Cavity단위 데이터 그대로 수집 (N Cavity = 1Shot 변경 X)
-
- 
-  - 2.) 기본 추론 ( Fixed Prediction )
-
-       → 각 사출기당 실시간 1개의 Unique_Num(Working_No) 수집
-    
-       → 해당 학습모델 업로드
-
-       → 학습된 mae loss 정보 기준으로 MinMaxScaler(clip=True)로 예측용 데이터 정규화값 발산 방지 
-
-
-  - 3.) Distribution Adaptable Prediction
-
-       → 각 사출기당 실시간 N개 데이터 수집 & NxD데이터 자체 MinMaxScaling 진행 
-
-       → 해당 학습모델로 실시간 N개 데이터 예측 & Test_MAE_Loss 값 계산
-
-       → Test_MAE_Loss값 기반 KDE분포 생성/임계값 Quantile 재계산으로 N개 데이터 개별 품질 예측 수행
-
-       → 마지막 20개 데이터  & 현재 Unique_Num(Working_No)에 해당하는 데이터 품질 예측 결과 출력
-
-
-   - 4.) Hybrid Anomaly Detection System
-
-       → 각 사출기당 실시간 N개 수지된 데이터의 Test_MAE_Loss 분포의 Stability 함수 작성
-
-       → Stability 여부에 따라 현재 입력된 UniqueNum에 대한 Fixed Pred 단독 or Fixed & Adaptable 혼합 활용
+   - 1측
 
        → Fixed=Normal / Adaptable=False 결과 발생 시 마지막 20개 데이터 예측 결과의 정상비율 기반으로 최종 품질 예측
 

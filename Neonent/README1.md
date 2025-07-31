@@ -102,7 +102,32 @@
 
    - 4.) Hybrid Anomaly Detection System
 
-   - 5.) Recheck Anomalies Process 
+       → 각 사출기당 실시간 N개 수지된 데이터의 Test_MAE_Loss 분포의 Stability 함수 작성
+
+       → Stability 여부에 따라 현재 입력된 UniqueNum에 대한 Fixed Pred 단독 or Fixed & Adaptable 혼합 활용
+
+       → Fixed=Normal / Adaptable=False 결과 발생 시 마지막 20개 데이터 예측 결과의 정상비율 기반으로 최종 품질 예측
+
+   - 5.) Recheck Anomalies Process
+     
+       → 각 사출기당 실시간 N개 수지된 데이터의 Test_MAE_Loss 분포의 공정능력지수(CP,CPK) 계산
+
+       → Pred Normals의 mae_loss값들을 기반으로 Pred Faults mae_loss값들의 Robust Z Score 계산
+
+       → Pred Faults의 mae loss값들과 Dist Adaptable Pred과정에서의 KDE-Quantile임계값 차이 계산
+
+       → 총 계산 통계량들로 불량예측이 발생한 데이터들에 대한 예측 결과 수정 검토 (Ex. 임계값을 약간 초과한 불량결과인지)
+
+    - 6.) 작업시간 예외처리 적용 
+    
+       → 작업자가 직접 사출기 가동하는 시간은 분석 제외 (이때 모든 데이터는 Default=Normal로 취)
+        
+---
+
+### 전체 프로세스 예시 
+
+
+
 
  
     

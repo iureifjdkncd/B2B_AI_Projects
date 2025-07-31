@@ -89,12 +89,12 @@
 
        → 결측 정보(Ex. 품목 , Production, Setting) Forward/Backward/Mean/Mode Fill
 
-       → 정보 결함으로 인한 예외처리 방지 
+       → 정보 결함으로 인한 예측 불가 예외처리 사전전방지 
 
 
   - 2.) 기본 추론 ( 학습이력이 있는 정보 )
 
-       → 현재 Setting의 Cluster예측 & 해당 Cluster가 속한 학습된 Facility/ITem정보 활용
+       → 현재 Setting의 Cluster예측 & 해당 Cluster가 속한 학습된 Facility/Item정보 활용
     
        → 해당 학습모델 업로드
 
@@ -114,13 +114,21 @@
 
        → 학습된 mae loss 정보 기준으로 MinMaxScaler(clip=True)로 예측용 데이터 정규화값 발산 방지
 
-       → Trained Reconstruction MAE Loss 분포의 변동계수(Coefficient of Variance) & Setting Euclidean Distance로 임계값에 가중치 & Margin Limit 부여 ( 과적합 방지 & 추론 유연성 부여 )
+  - 4.) 추론 임계값 유연성 부어 
+
+       → 기존 학습 당시 고정 임계값 & trained_mae_loss의 Max 중 최대값 선택
+
+       → Trained_MAE_Loss의 변동계수(CV) 기반 기본 가중치 계산
+
+       → 적응형 추론 단계에서는 최근접 Setting 탐색 Euclidean Distance 추가 가중치 계산 
+
+       → 가중치 정보 기반으로 추론 단계에서 Threshold & Current test_mae_loss간 Margin 계산으로 불량예측 허용오차 계산
+
 
      <img width="343" height="150" alt="화면 캡처 2025-07-28 135636" src="https://github.com/user-attachments/assets/d5b4d90f-fbd6-41b6-a3e9-3effbe15f910" />
 
 
      <img width="343" height="150" alt="화면 캡처 2025-07-31 192107" src="https://github.com/user-attachments/assets/788e8d9c-435c-4cf7-a0c6-433cbdcebc5d" />
-
 
 ---
 

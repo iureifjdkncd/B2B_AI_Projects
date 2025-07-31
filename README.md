@@ -6,13 +6,13 @@
   
     → 데이터의 1일 Lot단위 생산 특징데이터 1대1 품질 라벨링 부재
  	
-    → Setting조합에 따른 Production 분포 상이
+    → 동일 설비(Faciility)-품목(Item)정보더라도 Setting조합에 따른 수치형 입력데이터의 분포 상이
    
 -	주요 결과
   
     → 1일 생산 Lot단위 불량률 집계로 학습데이터 정의
  	
-    → Unique Setting조합 기반 생산데이터 분리
+    → Unique Setting조합 기반 생산데이터 분리 
  	
     → 데이터 개수에 따른 비지도학습 모델 차등 학습
  	

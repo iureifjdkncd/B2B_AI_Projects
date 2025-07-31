@@ -54,6 +54,24 @@
 ---
 ### 학습 프로세스
 
+  - 1.) 기존 
+
+     → 사출 + PLC 결합데이터로 각 사출기 대상 지도학습 수행
+
+     → Trained Normal Data 대상으로 Isolation Forest 적용 & 소수 이상 정상값 제거
+
+     → Train/Test 대상 Undersampling & Train에 추가 OverSampling 적용으로 정상/불량 데이터 가중치 조정
+
+     → Tree ML기반 학습모델 다수 & Stacking Classifier 구축 (그림)
+
+    
+  - 2.) 변경 
+
+     → 불량데이터 정의 모호 & 수집개수 지나치게 부족 (Ex.100,000개중 100개미만 or 발생 X)
+
+     → 각 사출기 대상 기본 AutoEncoder모델 학습 (Early Stopping 적용& Best Weight 저장)
+
+
 ---
 ### 실시간 추론 프로세스  
    - 1.) 실시간 MongoDB 수집

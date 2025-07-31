@@ -6,23 +6,23 @@
   
     → 데이터의 1일 Lot단위 생산 특징데이터 1대1 품질 라벨링 부재
  	
-    → 동일 설비(Faciility)-품목(Item)정보더라도 Setting조합에 따른 수치형 입력데이터의 분포 상이
+    → 특정 Maker 내 동일 설비(Faciility)-품목(Item)정보더라도 Setting조합에 따른 수치형 입력데이터의 분포 상이
    
 -	주요 결과
   
-    → 1일 생산 Lot단위 불량률 집계로 학습데이터 정의
+    → 1일 생산 Lot단위 불량률 집계 기반으로 학습데이터 정의
  	
-    → Unique Setting조합 기반 생산데이터 분리 
+    → Unique Setting조합 기반 생산데이터 K-Means Clustering학습으로 분리 
  	
-    → 데이터 개수에 따른 비지도학습 모델 차등 학습
+    → 특정 Maker 내 Facility-Item-Setting 분할된 데이터 개수에 따른 비지도학습 모델 차등 학습
  	
 -	차별성
-  
-    → 새로운 정보(학습이력X)에 대한 유사 학습모델 대체 추론 (현재 수집데이터와 최근접 Setting정보 가진 학습모델 활용)
+
+    → 현재 입력데이터가 기존 학습불가 Setting / 학습이력 없는 정보의 경우 과거 최근접 Setting 학습모델로 추론 대체 
+    
+    → 추론 임계값 유연성 & 불량예측 허용오차 Margin 부여  
    
-    → 추론 임계값 유연성 부여  (Trained MAE Reconstuction Dist & Setting Euclidean Dist 통계량 활용)
-   
-    → 학습모델 기반 개별 학습데이터 임시라벨링 부여 & 각 설비/품질 당 최다 생산 및 최소 예측불량률을 가진 Production 통계량/Unique Setting조합 추천용 데이터 구축 
+    → 학습모델 기반 과거 학습데이터 예측라벨링 부여 & 각 설비/품질 당 최다 생산 및 최소 예측불량률을 가진 Production 통계량/Unique Setting조합 추천용 데이터 구축 
    
 -	기여도
   

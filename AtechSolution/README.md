@@ -108,15 +108,19 @@
 
   - 3.) 적응형 추론 ( 학습이력이 없거나 기존 학습불가 Setting Cluster 정보 )
 
-       → 학습했던 다변량 Setting 조합 Dictionary중 현재 수집데이터의 Setting조합과 최근접 정보 탐색 ( Euclidean Distance)
+       → 해당 Maker 전체 혹은 동일 Facility/Item 학습정보 중 현재 Setting조합과 최근접 정보 탐색 ( Euclidean Distance)
 
-       → 최근접 정보 기반 대체 추론용 학습모델 선택
+       → 최근접 정보 기반 대체 추론용 학습모델로 현재 실시간 데이터 품질 추론 
 
        → 학습된 mae loss 정보 기준으로 MinMaxScaler(clip=True)로 예측용 데이터 정규화값 발산 방지
 
        → Trained Reconstruction MAE Loss 분포의 변동계수(Coefficient of Variance) & Setting Euclidean Distance로 임계값에 가중치 & Margin Limit 부여 ( 과적합 방지 & 추론 유연성 부여 )
 
      <img width="343" height="150" alt="화면 캡처 2025-07-28 135636" src="https://github.com/user-attachments/assets/d5b4d90f-fbd6-41b6-a3e9-3effbe15f910" />
+
+
+     <img width="343" height="150" alt="화면 캡처 2025-07-31 192107" src="https://github.com/user-attachments/assets/788e8d9c-435c-4cf7-a0c6-433cbdcebc5d" />
+
 
 ---
 
@@ -127,6 +131,8 @@
   - 2.) 각 설비 & 품목 생산정보 중 최다 생산 이력 / 최소 예측불량률 이력을 가진 Cluster Setting정보 정리
 
   - 3.) Unique Setting 정보 & 해당 Setting으로 생산한 Production Data들의 Min/Mean/Max 제공
+
+  - 4.) 모델링 기반 과거학습데이터의 품질 라벨링을 토대로 추후 생산계획 참고 제안 
 
 
     <img width="1599" height="455" alt="그림4" src="https://github.com/user-attachments/assets/18c411e5-9e66-4d15-b073-d22f9d167a46" />

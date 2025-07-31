@@ -36,7 +36,6 @@
 
    → 기존 사출+PLC데이터 활용 지도학습에서 사출데이터만 활용한 비지도학습 변경
  
-  
 ---
 
 ### 주요 전처리 
@@ -71,18 +70,19 @@
 
      → 각 사출기 대상 기본 AutoEncoder모델 학습 (Early Stopping 적용& Best Weight 저장)
 
-
 ---
 ### 실시간 추론 프로세스  
    - 1.) 실시간 MongoDB 수집
 
-       → 각 사출기당 N개 데이터 실시간 수집
+       → 각 사출기당 N개 데이터 실시간 수집 & N Cavity = 1Shot형식으로 변경 X상태로 그대로 개별 예측 방식 적용 
      
-       → N Cavity = 1Shot형식으로 변경 X 
-
    - 2.) 기본 예측 (Fixed Prediction)
 
+       → 실시간 특정 사출기의 Unique_Num(Working_No)에 해당하는 데이터 AE기반 예측 
+
    - 3.) Distribution Adaptable Prediction
+
+       
 
 
    - 3.) Hybrid Anomaly Detection System 구축 

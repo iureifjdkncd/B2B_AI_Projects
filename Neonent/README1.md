@@ -66,9 +66,9 @@
     
   - 2.) 변경 
 
-     → 불량데이터 정의 모호 & 수집개수 지나치게 부족 (Ex.100,000개중 100개미만 or 발생 X)
+     → 불량데이터 정의 모호 & 수집개수 지나치게 부족 현상 발생 (Ex.100,000개중 100개미만 or X)
 
-     → 각 사출기 대상 기본 AutoEncoder모델 학습 (Early Stopping 적용& Best Weight 저장)
+     → 각 사출기 대상 정상데이터(Cavity불량률=0.0%)로 기본 AutoEncoder모델 학습 (Early Stopping 적용& Best Weight 저장)
 
 ---
 ### 실시간 추론 프로세스  
@@ -79,7 +79,7 @@
      
    - 2.) 기본 예측 (Fixed Prediction)
 
-       → 실시간 특정 사출기의 Unique_Num(Working_No)에 해당하는 데이터 AE기반 예측 
+       → 실시간 특정 사출기의 Unique_Num_Cavity(Working_No)에 해당하는 데이터 AE기반 예측 
 
    - 3.) Distribution Adaptable Prediction
 
@@ -89,13 +89,13 @@
 
        → Test_Mae_loss집합의 mae_loss/anomaly여부/pred결과/threshold 통합 정보 출력
 
-       → Test_Mae_Loss 중 마지막 20개 & Unique_Num(Working_No)에 해당하는 예측 결과 출력 
+       → Test_Mae_Loss 중 마지막 20개 & Unique_Num_Cavity(Working_No)에 해당하는 예측 결과 출력 
        
    - 4.) Hybrid Anomaly Detection System 구축
 
        → N개 Test_mae_loss에 대한 KDE분포의 안정성 Custom 계산 (CV,Skew,Kurtosis 종합)
 
-       → Stable=False 시 Fixed Prediction 단독 / Stable=True 시 Fixed & Adaptable 혼용 기반 품질 예측 
+       → Stable=False시 Fixed Prediction 단독 / Stable=True시 Fixed & Adaptable 혼용 기반 품질 예측 
 
        → Fixed=Normal / Adaptable=False 결과 발생 시 마지막 20개 데이터 예측 결과의 정상비율 기반으로 최종 품질 예측
         

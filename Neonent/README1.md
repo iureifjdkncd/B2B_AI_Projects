@@ -82,10 +82,19 @@
 
    - 3.) Distribution Adaptable Prediction
 
+       → 실시간 특정 사출기에서 N개 데이터 수집 & AE모델 예측기반 test_mae_loss 집합 계산
+
+       → Test_Mae_loss집합의 KDE분포 생성 & KDE기반 Quantile기준으로 임계값 계산
+
+       → Test_Mae_loss집합의 mae_loss/anomaly여부/pred결과/threshold 통합 정보 출력
+
+       → Test_Mae_Loss 중 마지막 20개 & Unique_Num(Working_No)에 해당하는 예측 결과 출력 
        
 
 
-   - 3.) Hybrid Anomaly Detection System 구축 
+   - 3.) Hybrid Anomaly Detection System 구축
+
+   - 
 
        → Fixed=Normal / Adaptable=False 결과 발생 시 마지막 20개 데이터 예측 결과의 정상비율 기반으로 최종 품질 예측
         

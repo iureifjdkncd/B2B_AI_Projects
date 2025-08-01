@@ -132,7 +132,7 @@
 
    - 1.) 실시간 N개 데이터 수집 기반
 
-   - 2.) 최근 UniqueNum Key값 단일 입력값에 대한 예측 & N개 데이터 전체의 AE예측 mae_loss분포 기반 적응형 예측 혼합
+   - 2.) 최근 UniqueNum Key값에 대한 단일예측 & N개 데이터 전체의 AE예측 mae_loss분포 기반 적응형 예측 혼합
 
    - 3.) Prediction Case 예시 제공 
 

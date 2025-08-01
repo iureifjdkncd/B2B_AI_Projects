@@ -110,7 +110,7 @@
 
        → Stable=False시 Fixed Prediction 단독 / Stable=True시 Fixed & Adaptable 혼용 기반 품질 예측 
 
-       → Fixed=Normal / Adaptable=False 결과 발생 시 마지막 20개 데이터 예측 결과의 정상비율 기반으로 최종 품질 예측
+       → Fixed=Normal & Adaptable=Fault 결과 발생 시 마지막 20개 데이터 예측 결과의 정상비율 기반으로 최종 품질 예측
         
    - 5.) Recheck Anomalies Process
      
@@ -130,7 +130,7 @@
 
 ### 전체 프로세스 예시 
 
-   - 1.) 실시간 N개 데이터 수집 & 최근 UniqueNum Key값에 대해서 예측 지속
+   - 1.) 실시간 N개 데이터 수집 기반으로 최근 UniqueNum Key값 단일 입력값값 & N개 전체를 활용한 예측 
 
    - 2.) Prediction Case 예시 제공 
 
@@ -140,11 +140,11 @@
 
    <img width="647" height="355" alt="화면 캡처 2025-08-01 160909" src="https://github.com/user-attachments/assets/61cc01c9-c673-46bf-a7b5-6674f5b94556" />
 
-   <img width="578" height="79" alt="화면 캡처 2025-08-01 161349" src="https://github.com/user-attachments/assets/c399504f-4b9b-489b-a52b-179654b35485" />
+   <img width="578" height="74" alt="화면 캡처 2025-08-01 161349" src="https://github.com/user-attachments/assets/c399504f-4b9b-489b-a52b-179654b35485" />
 
-   <img width="263" height="201" alt="화면 캡처 2025-08-01 161419" src="https://github.com/user-attachments/assets/348deb92-6ef0-42b0-8f58-32c6722d2391" />
+   <img width="263" height="194" alt="화면 캡처 2025-08-01 161419" src="https://github.com/user-attachments/assets/348deb92-6ef0-42b0-8f58-32c6722d2391" />
 
-   <img width="542" height="351" alt="화면 캡처 2025-08-01 161456" src="https://github.com/user-attachments/assets/ac291c8a-995e-47db-a6b2-fe55ec307e99" />
+   <img width="647" height="355" alt="화면 캡처 2025-08-01 161456" src="https://github.com/user-attachments/assets/ac291c8a-995e-47db-a6b2-fe55ec307e99" />
 
 
 

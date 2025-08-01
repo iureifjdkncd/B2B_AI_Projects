@@ -81,7 +81,7 @@
 
        → Injection/CoolingTime_Mean값에 Gaussian Noise 추가 적용
 
-    - 6.) 추천값 예외처리 적용 3
+   - 6.) 추천값 예외처리 적용 3
 
        → 실시간 MongoDB수집 문제로 인한 Production & Environment 매칭 오류 / Working_No조회 불가  
 
@@ -96,4 +96,4 @@
 
       <img width="230" height="212" alt="화면 캡처 2025-08-01 170838" src="https://github.com/user-attachments/assets/ee32ee33-6405-47e2-8462-fb5f58266b1a" />
 
-
+---

@@ -63,3 +63,34 @@
 
 
 ---
+
+3.)	네오넌트(Neonent)
+-	수행기간 ( 2023.05 ~ 2025.03 )
+-	문제 정의
+  
+    → 다수 사출설비에 대한 품질예측 (정상/불량 이진분류)
+ 	
+    → 다수 사출설비에 대한 사출시간(InjectionTime)/냉각시간(CoolingTime)에 대한 실시간 Setting 추천 
+ 	
+-	주요 결과
+  
+    → 각 사출기 수집데이터에 대한 비지도학습(AutoEncoder) 모델 학습 (품질예측)
+ 	
+    → 각 사출기 수집데이터 대한 군집학습(K-Means) 모델 학습 (Set_CoolingTime/InjectionTime Mean 추천)
+ 	
+-	차별성
+  
+    → 실시간 UniqueNum 단일데이터 대상 예측 & 실시간 다수 N개 Test_Mae_loss 분포 기반 혼용 예측 (품질예측)  
+
+    → 실시간 Working_No 대상 군집예측 & 해당 군집 과거 부분집합 기반 현재 대비 최근접 Setting추천 업데이트
+
+-	기여도
+ 	
+    → 라벨링 문제를 가진 사출기 품질예측에서 실시간 1개 & N개에 대한 혼용예측으로 불량탐지에 대한 통계적 유연성 극대화 
+
+    → CoolingTime/InjectionTime_Mean Setting추천 과정에서 Std변수 및 Gaussian Noise 등 예외처리로 유연성 부여
+
+    → 두 문제 모두 추론과정에서 활용하는 학습정보에 실시간 데이터 업데이트로 시스템 지속가능성 활성화 
+
+
+---

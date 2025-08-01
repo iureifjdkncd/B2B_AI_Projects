@@ -62,24 +62,24 @@
        → 실시간 마지막 데이터는 기존 학습데이터에 지속 업데이트 적용 
 
 
-   - 3.) Set Injection/CoolingTime_mean 추천값 제공 
+   - 3.) 실시간 대비 Set Injection/CoolingTime_mean 추천값 제공 
 
-       → 부분집합 개수 다수일 경우 현재 실시간 데이터의 Injection/CoolingTime_mean과 최근사값 선택 
+       → 부분집합 개수 다수일 경우 현재 실시간 데이터의 Set_Injection/CoolingTime_mean과 최근사값 선택 
 
-       → Set_Injection/CoolingTime_Std값을 기반으로 Injection/CoolingTime_Mean ± Std 범위 계산
+       → Set_Injection/CoolingTime_Std값을 기반으로 Set_Injection/CoolingTime_Mean ± Std 범위 계산
 
-       → Injection/CoolingTime_Mean 범위 중 무작위값 선택 최종 완료
+       → Set_Injection/CoolingTime_Mean 범위 중 무작위값 선택 최종 완료
 
 
    - 4.) 추천값 예외처리 적용 1 
 
-       → 군집기반 부분집합 개수 1개일 경우 해당 Injection/CoolingTime +Mean값 출력 & std기반 범위 적용 X 
+       → 군집기반 부분집합 개수 1개일 경우 해당 Set_Injection/CoolingTime +Mean값 출력 & std기반 범위 적용 X 
 
    - 5.) 추천값 예외처리 적용 2
 
-       → 최종 추천값 Injection/CoolingTime_Mean값이 현재 실시간 데이터와 같거나 크기 비교 기준 미달 발생 경우
+       → 최종 추천값 Set_Injection/CoolingTime_Mean값이 현재 실시간 데이터와 같거나 크기 비교 기준 미달 발생 경우
 
-       → Injection/CoolingTime_Mean값에 Gaussian Noise 추가 적용
+       → Set_Injection/CoolingTime_Mean값에 Gaussian Noise 추가 적용
 
    - 6.) 추천값 예외처리 적용 3
 
@@ -93,6 +93,8 @@
 ### 전체 프로세스 예시 
 
    - 1.) 실시간 N개 데이터 수집 중 최근 Working_No에 대한 과거조건 기반 CoolingTime/InjectionTime 추천
+
+   - 2.) 현재 Cooling/Injection_Mean Setting값들과 K-Means기반 과거공정조건과 차이 검토 & 생산 참고 
 
       <img width="400" height="300" alt="화면 캡처 2025-08-01 170838" src="https://github.com/user-attachments/assets/ee32ee33-6405-47e2-8462-fb5f58266b1a" />
 

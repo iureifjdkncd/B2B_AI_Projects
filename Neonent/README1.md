@@ -130,9 +130,11 @@
 
 ### 전체 프로세스 예시 
 
-   - 1.) 실시간 N개 데이터 수집 기반으로 최근 UniqueNum Key값 단일 입력값값 & N개 전체를 활용한 예측 
+   - 1.) 실시간 N개 데이터 수집 기반
 
-   - 2.) Prediction Case 예시 제공 
+   - 2.) 최근 UniqueNum Key값 단일 입력값에 대한 예측 & N개 데이터 전체의 AE예측 mae_loss분포 기반 적응형 예측 혼합
+
+   - 3.) Prediction Case 예시 제공 
 
    <img width="578" height="74" alt="화면 캡처 2025-08-01 160940" src="https://github.com/user-attachments/assets/65d47c72-a8ec-417a-bf1b-d1cff7e9587b" />
 

@@ -48,7 +48,10 @@
 
      → 기존 개별 1대1 라벨링기반 데이터에서 N Cavity = 1Shot(품목) 형식으로 데이터 집계
 
-     → 각각의 N Cavity집약 기반 데이터에서 1개라도 불량유형 입력 시 불량으로 처리 (ppt 그림 추가)
+     → 각각의 N Cavity집약 기반 데이터에서 1개라도 불량유형 입력 시 불량으로 처리 
+
+    <img width="500" height="300" alt="그림1" src="https://github.com/user-attachments/assets/d176d45f-7be9-4712-8ab0-6e59add305f3" />
+
 
 ---
 ### 학습 프로세스

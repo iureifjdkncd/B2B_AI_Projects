@@ -50,7 +50,7 @@
 
        → Test 1~5까지 매번 다른 입력변수 기반 학습모델로 예측 수행 
 
-     <img width="273" height="119" alt="화면 캡처 2025-08-01 181019" src="https://github.com/user-attachments/assets/0a4b7d0f-f7ef-4016-9e25-1f75f0ed8878" />
+     <img width="373" height="200" alt="화면 캡처 2025-08-01 181019" src="https://github.com/user-attachments/assets/0a4b7d0f-f7ef-4016-9e25-1f75f0ed8878" />
 
    - 6.) 추론용 API 작성 (시스템 가동용 X)
      

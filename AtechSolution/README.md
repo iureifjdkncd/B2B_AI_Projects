@@ -54,7 +54,7 @@
 
       → 다변량 Setting데이터의 Unique조합 계산 (Drop Duplicates)
     
-      → K-Means Clustering학습으로 고유 Setting 조합에 대한 Numbering 부여
+      → K-Means 학습으로 고유 Setting 조합에 대한 전체 학습데이터 Cluster Numbering 부여
 
       → 3개의 maker에서 각 Facility-Item-Setting에 대한 정보 구분
 

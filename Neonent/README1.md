@@ -42,7 +42,12 @@
 
   - 1.) 기존 입력값 처리
 
-     → 각 사출기에서 수집된 4개 온도 + 생산과정에서 수집되는 약 1초단위 PLC시계열 데이터 통계량 결합 (ppt 그림 추가)
+     → 각 사출기에서 수집된 4개 온도 + 생산과정에서 수집되는 약 1초단위 PLC시계열 데이터 통계량 결합
+
+    <img width="500" height="300" alt="그림2" src="https://github.com/user-attachments/assets/c34ebfb3-1f15-4e84-8b87-1cabee5bbc70" />
+
+    <img width="500" height="300" alt="그림3" src="https://github.com/user-attachments/assets/c458974a-80d5-49dd-a161-9a2889a3cc2a" />
+
 
   - 2.) 변경 입력값 처리
 
@@ -66,12 +71,17 @@
 
      → Tree ML기반 학습모델 다수 & Stacking Classifier 구축 (그림)
 
-    
+     <img width="170" height="85" alt="화면 캡처 2025-08-01 160424" src="https://github.com/user-attachments/assets/e7e630f5-374c-4f26-86a6-787131d5f2b4" />
+
+
   - 2.) 변경 
 
      → 불량데이터 정의 모호 & 수집개수 지나치게 부족 현상 발생 (Ex.100,000개중 100개미만 or X)
 
      → 각 사출기 대상 정상데이터(Cavity불량률=0.0%)로 기본 AutoEncoder모델 학습 (Early Stopping 적용& Best Weight 저장)
+
+    <img width="500" height="300" alt="다운로드" src="https://github.com/user-attachments/assets/b087fafc-9255-48d8-a30b-c35993634435" />
+
 
 ---
 ### 실시간 추론 프로세스  

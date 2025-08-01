@@ -130,7 +130,7 @@
 
 ### 전체 프로세스 예시 
 
-    - 1.) 실시간 N개 데이터 수집 & 최근 UniqueNum Key값에 대해서 예측 지속 
+   - 1.) 실시간 N개 데이터 수집 & 최근 UniqueNum Key값에 대해서 예측 지속 
 
    <img width="578" height="74" alt="화면 캡처 2025-08-01 160940" src="https://github.com/user-attachments/assets/65d47c72-a8ec-417a-bf1b-d1cff7e9587b" />
 

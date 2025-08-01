@@ -94,6 +94,6 @@
 
    - 1.) 실시간 N개 데이터 수집 중 최근 Working_No에 대한 과거조건 기반 CoolingTime/InjectionTime 추천
 
-      <img width="230" height="212" alt="화면 캡처 2025-08-01 170838" src="https://github.com/user-attachments/assets/ee32ee33-6405-47e2-8462-fb5f58266b1a" />
+      <img width="500" height="350" alt="화면 캡처 2025-08-01 170838" src="https://github.com/user-attachments/assets/ee32ee33-6405-47e2-8462-fb5f58266b1a" />
 
 ---

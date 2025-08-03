@@ -27,6 +27,7 @@
 
   - 3.) 품질 라벨링 불균형 가중치 조정 (Over/UnderSampling)
 
+---
 ### 학습 프로세스
 
   - 1.) 동일 입력값 대비 다수 Target에 대한 Tree기반 ML Classifier 구축

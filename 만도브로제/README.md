@@ -11,12 +11,8 @@
 - numpy 1.23.1
 - scipy 1.9.1
 - scikit-learn 1.2.2
-- pymongo 4.3.3
 - xgboost version: 1.7.4
 - lightgbm version: 3.3.5
-- fastapi 0.115.12
-- uvicorn 0.34.3
-
 ---
 
 ### 문제 정의

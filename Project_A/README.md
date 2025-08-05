@@ -145,8 +145,11 @@
 
     <img width="1599" height="455" alt="그림4" src="https://github.com/user-attachments/assets/18c411e5-9e66-4d15-b073-d22f9d167a46" />
 
+### 주요 성과 
 
-
+   - 1.) AI시스템 완성 이후 실제 불량생산 정확도 약 20% 향상
+     
+   - 2.) 예측기반 최적 생산 참고용 데이터 가이던스 활용 시 불량 생산 약 5% 감소 
 
 
 

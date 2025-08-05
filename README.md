@@ -14,7 +14,7 @@
  	
     → Unique Setting조합 기반 생산데이터 K-Means Clustering학습으로 분리 
  	
-    → 특정 Maker 내 Facility-Item-Setting 분할된 데이터 개수에 따른 비지도학습 모델 차등 학습
+    → 특정 Maker 내 Facility-Item-Setting 분할된 데이터 개수에 따른 비지도학습 모델 차등 학습 (IsolationForest, AutoEncoder, Memory Augmented AutoEncoder)
 
     → 학습모델 기반 기존데이터 예측 라벨링 & 각 설비/품목당 최다생산/최소불량률 Setting정보 정량화 및 생산통계량 계산
  	
@@ -44,8 +44,10 @@
  	
 -	주요 결과
   
-    → 점추정/확률추정 활용 확장으로 LSTM계열 고질적 Prediction Delay & 학습 이후 Data Drift에 강건한 예측 프로세스 구축 
- 	
+    → 점추정/확률추정 활용 확장으로 LSTM계열 고질적 Prediction Delay & 학습 이후 Data Drift에 강건한 예측 프로세스 구축
+
+ 	  → Quantile Tree ML Regression, Monte Carlo Dropout LSTM/GRU
+
     → 3개 목표값의 최근사 예측값 대비 크거나 같은 품질을 동시에 만족시키는 공정조건 경로탐색 함수 기능 극대화 
  	
 -	차별성
@@ -107,7 +109,7 @@
  	
 -	주요 결과
   
-    → 학습데이터 기반 변수선택 & 교차검증을 토대로 지도학습 결과 출력 완성 
+    → 학습데이터 기반 변수선택 & 교차검증을 토대로 Tree ML Classifier 지도학습 결과 출력 완성 
  	
 ---
 
@@ -115,7 +117,7 @@
 -	수행기간 ( 2024.07 ~ 2024.08 )
 -	문제 정의
   
-    → Cogging Motor 기반 조립/병렬공정 불량탐지에 대한 AI학습 적용 
+    → Cogging Motor 기반 조립/병렬공정 불량탐지에 대한 Tree ML Classifier AI학습 적용 
  	
 -	주요 결과
   
@@ -127,7 +129,7 @@
 -	수행기간 ( 2023.11 ~ 2023.12 )
 -	문제 정의
   
-    → 고속사출기 불량탐지에 대한 AI학습 적용 
+    → 고속사출기 불량탐지에 대한 Tree ML Classifier AI학습 적용 
  	
 -	주요 결과
   

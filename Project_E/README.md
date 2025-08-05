@@ -30,7 +30,7 @@
 ---
 ### 학습 프로세스
 
-  - 1.) 동일 입력값 대비 다수 Target에 대한 Tree기반 ML Classifier 구축
+  - 1.) 동일 입력값 대비 다수 Target에 대한 Tree기반 ML Classifier 구축(RF,XGB,LGBM...)
 
   - 2.) 성능평가에 따라 현재 Classifier 적용/불가능인 조립/병렬공정 조합 파악 
 

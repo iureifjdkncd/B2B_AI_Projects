@@ -76,7 +76,7 @@
 
   - 2.) 각 학습모델 기반 품질 예측값 KDE Ensemble & 품질 범위 정량화 (Data Drift Robustness 목표)
 
-       → 점추정/확률 추정 결과들의 Min/Mean/Max 특징들로 KDE 모수 지정 & 분포 생성
+       → 점추정/확률 추정 결과들의 Min/Mean/Max 특징들로 KDE 모수 지정 & 분포 생성 및 Final Mean값 별도 추론 (시계열 예측 정확도 측정용)
 
        → KDE분포의 변동계수(Coefficient of Variance) 기반으로 Upper/Lower Boundary 지정 
 

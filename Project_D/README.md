@@ -43,7 +43,7 @@
 
        → 매번 다른 Train Data 기반 변수선택 개별 적용 
 
-   - 3.) Tree기반 ML Classifier 지도학습 모델 정의
+   - 3.) Tree기반 ML Classifier 지도학습 모델 정의(RF,XGB,LGBM...)
 
 
    - 5.) 특정 학습모델 기반 교차검증 실험 진행

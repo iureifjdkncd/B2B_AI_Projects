@@ -99,3 +99,7 @@
       <img width="400" height="300" alt="화면 캡처 2025-08-01 170838" src="https://github.com/user-attachments/assets/ee32ee33-6405-47e2-8462-fb5f58266b1a" />
 
 ---
+
+### 주요 성과 
+
+   - 1.) 냉각시간/사출시간에 대한 실제 공정조건 vs 실시간 추천 공정조건 정확도 약 2~3% 유지

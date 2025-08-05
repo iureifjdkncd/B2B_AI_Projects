@@ -63,7 +63,7 @@
 
   - 1.) 기존 
 
-     → 사출 + PLC 결합데이터로 각 사출기 대상 지도학습 수행
+     → 사출 + PLC 결합데이터로 각 사출기 대상 지도학습 수행(RF,XGB,LGBM...)
 
      → Trained Normal Data 대상으로 Isolation Forest 적용 & 소수 이상 정상값 제거
 

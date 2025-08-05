@@ -34,5 +34,5 @@
 
   - 1.) 표준화 데이터셋 기반 0시점 ~ 6시점 검사 수량 이동된 개별 데이터셋마다 모델링 구축
 
-  - 2.) 기본 Tree기반 ML Classifier & Optuna기반 파라미터 조정기반 성능 향상 시도
+  - 2.) 기본 Tree기반 ML Classifier & Optuna기반 파라미터 조정기반 성능 향상 시도 (RF,XGB,LGBM...)
 

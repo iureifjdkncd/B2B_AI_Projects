@@ -94,7 +94,7 @@
   
     → 실시간 사출기 단일/다수 데이터기반 혼합 불량탐지에서 통계적 유연성 극대화  
 
-    → CoolingTime/InjectionTime_Mean Setting 추천 과정에서 통계기반/예외처리로 유연성 부여
+    → CoolingTime/InjectionTime_Mean Setting 추천 과정에서 통계기반 범위 보정/예외처리로 유연성 부여
 
 -	기여도
 

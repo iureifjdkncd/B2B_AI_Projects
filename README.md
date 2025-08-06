@@ -1,152 +1,66 @@
-# projects main
-
-1.)	Project A - 비지도 학습 기반 사출 품질 예측 시스템 (자율형 공장 구축 사업)
--	수행기간 ( 2023.08 ~ 2025.07)
--	문제 정의
-  
-    → 데이터의 1일 Lot단위 생산 특징데이터 1대1 품질 라벨링 부재
- 	
-    → 특정 Maker 내 동일 설비(Faciility)-품목(Item)정보더라도 Setting조합에 따른 수치형 입력데이터의 분포 상이
-   
--	주요 결과
-  
-    → 1일 생산 Lot단위 불량률 집계 기반으로 학습데이터 정의
- 	
-    → Unique Setting조합 기반 생산데이터 K-Means Clustering학습으로 분리 
- 	
-    → 특정 Maker 내 Facility-Item-Setting 분할된 데이터 개수에 따른 비지도학습 모델 차등 학습 (IsolationForest, AutoEncoder, Memory Augmented AutoEncoder)
-
-    → 학습모델 기반 기존데이터 예측 라벨링 & 각 설비/품목당 최다생산/최소불량률 Setting정보 정량화 및 생산통계량 계산
- 	
--	차별성
-
-    → 현재 입력데이터가 기존 학습불가 Setting / 학습이력 없는 정보의 경우 최근접 Setting 학습모델로 추론 대체 
-    
-    → 추론 임계값 유연성 & 불량예측 허용오차 Margin 부여  
-   
-    → 예측모델 기반 학습데이터 임시라벨링을 토대로 과거 프로세스 정리 & 생산계획 보조/참고용 데이터셋 구축 
-   
--	기여도
-  
-    → 실시간 사출 생산데이터 예측 과정에서 실시간 데이터의 품질저하/학습이력 유무에 강건한 지속가능 시스템 구축 
-
- 	  → 초기 불량 탐지 정확도 약 83% & 실제 적용 시 약 67%로 하락 ==> 향후 불량탐지 정확도 약 16% 향상
-
-    → 예측기반 과거 설비/품목당 최적생산 Setting 정보 구축으로 사용자 가이던스 제공 (생산 불량 발생률 약 5% 감소)
-
----
-
-2.)	Project B - 확률 기반 제당공정 품질 예측 및 최적 조건 추천 시스템 (AI 바우처 사업)
--	수행기간 ( 2024.05 ~ 2025.03 )
--	문제 정의
-  
-    → 다음 시점(10분 이후) 3개의 제당공정 품질 예측모델 구축
- 	
-    → 사용자 정의 목표값 or 예측 품질 대비 같거나 큰 품질에 대응하는 다변량 공정 입력조건 추천
- 	
--	주요 결과
-  
-    → 점추정/확률추정 활용 확장(Quantile Tree ML Regression, Monte Carlo Dropout LSTM/GRU) 활용 
-
- 	  → LSTM계열 Prediction Delay & Data Drift에 강건한 예측 프로세스 구축 
-
-    → 3개 목표값의 최근사 예측값 대비 크거나 같은 품질을 동시에 만족시키는 공정조건 경로탐색 함수 기능 극대화 
- 	
--	차별성
-  
-    → 최종 예측기반 경로탐색 함수 구축 과정에서 과거/실시간 데이터 활용 극대화 
-
-    → 실시간 최근 입력데이터를 기존 학습데이터에 자동 업데이트하는 것으로 시스템 주요 기능의 지속가능성 확보 
-
- 	
--	기여도
-  
-    → 10분단위로 수집 특징을 기반으로 사용자 정의 목표값 뿐만 아니라 예측품질의 범위 출력 가능한 시스템 구축
-
-    → 적정/하향/상향 품질에 대한 유연한 공정 생산조건 시나리오 구축 가능하도록 시스템 활용방안 제안
-
-    → 점추정 예측 기준 실시간 오차는 약 3 ~ 8% & 실제 vs 추천공정조건 간 오차는 약 5 ~ 10%가량 차이 유지
- 	
- 	(초기 품질 정확도는 약 90%이상 & 실제 적용 시 약 80%가량으로 수렴 )
+Project A: 비지도 학습 기반 사출 품질 예측 시스템
+• 핵심 알고리즘: K-Means, AutoEncoder, Memory-Augmented AutoEncoder
+• 주요 결과
+ - K-Means를 활용해 동일 설비·품목 내에서도 Setting별 데이터 분포를 분리하여 독립된 학습군 구성
+ - 비지도학습 기반 실험 불량 탐지 정확도 약 86% → 실제 현장 적용 시 약 67% 
+ - 학습 이력 유무 판단 → 유사 학습 모델 기반 대체 추론 + 임계값 가중치 적용 → 불량 탐지 정확도 평균 약 16% 향상
+ - 예측 기반 라벨링을 통해 품질 통계 및 최적 조건 도출 → 생산 불량률 약 5% 감소
+• 🔗 핵심 코드 및 내용 정리: Project_A at main · iureifjdkncd/projects
 
 
----
-
-3.)	Project C - 사출설비 품질 예측 및 최적 조건 추천 시스템 (K등대공장 구축사업)
--	수행기간 ( 2023.05 ~ 2025.03 )
--	문제 정의
-  
-    → 다수 사출설비에 대한 품질예측 (정상/불량 이진분류)
- 	
-    → 다수 사출설비에 대한 사출시간(InjectionTime)/냉각시간(CoolingTime)에 대한 실시간 Setting 추천 
- 	
--	주요 결과
-  
-    → 각 사출기 수집데이터에 대한 비지도학습(AutoEncoder) 모델 학습 (품질예측)
-
- 	  → 실시간 UniqueNum 단일데이터 대상 예측 & 실시간 다수 N개 Test_Mae_loss 분포 기반 혼용 예측 (품질예측) 
-
-    → 각 사출기 수집데이터 대한 군집학습(K-Means) 모델 학습 (Set_CoolingTime/InjectionTime Mean 추천)
-
-    → 실시간 Working_No 대상 군집예측 & 해당 군집 과거 부분집합 기반 현재 대비 최근접 Setting추천 업데이트
- 	
--	차별성
-  
-    → 실시간 사출기 단일/다수 데이터기반 혼합 불량탐지에서 통계적 유연성 극대화  
-
-    → CoolingTime/InjectionTime_Mean Setting 추천 과정에서 통계기반 범위 보정/예외처리로 유연성 부여
-
--	기여도
-
-    → 초기 불량탐지 정확도는 약 77~92%수준이였으나 실제 적용 시 약 68%로 하락
-
-    → 데이터 품질문제(Ex.라벨링)을 고려한 AI & 통계기반 실시간 모니터링 시스템 구축  (추후 불량탐지 정확도 약 14% 향상)
-
-    → 실시간 특성 반영한 군집기반 CoolingTime/InjectionTime_Mean Setting 참고용 모니터링 시스템 구축
-
- 	(실제 생산 vs 추천 공정조건 차이 약 2~3% 유지)
-
-    → 두 문제 모두 추론과정에서 활용하는 학습정보에 실시간 데이터 업데이트로 시스템 지속가능성 활성화 
+Project B: 확률적 예측 기반 제당 공정 품질 추론 및 조건 최적화 시스템
+• 핵심 알고리즘: Tree ML Quantile Regression(e.g., XGBoost, LightGBM), Monte Carlo Dropout, Bidirectional LSTM/GRU
+• 주요 결과
+ - 확률적 예측 접근 → 실험 정확도 95% 이상, 실제 현장 적용 시 약 85~87% 수렴
+ - Ensemble & KDE기반 예측분포 정량화 → 품질 정확도 평균 약 5% 향상
+ - 예측기반 최적공정조건 추론 → Gamma-KDE & Custom경로탐색 통합 & 실제 대비 추천 조건 일치 정확도 약 85~90% 이내 유지 
+• 🔗 핵심 코드 및 내용 정리: Project_B at main · iureifjdkncd/projects
 
 
----
+Project C: 
+[1] 사출 설비 품질 예측 시스템
+• 핵심 알고리즘: Tree ML Classifier (e.g., XGBoost, LightGBM), AutoEncoder
+• 주요 결과
+ - 지도학습 기반 실험 불량 탐지 정확도 약 91% → 실제 적용 시 약 68%
+ - 기존 라벨링 한계를 반영한 데이터 재정의 및 비지도 학습 대체 
+   - 실시간 단일·다수 입력 대응형 혼합 예측 체계 구축 → 불량 탐지 정확도 약 14% 향상
 
-4.)	Project D - 특정 사출설비 불량 예측 및 TTA인증 사업
--	수행기간 ( 2023.08 ~ 2023.09 )
--	문제 정의
-  
-    → 특정 사출설비에 대한 불량예측 코드 완성 & TTA인증용 보고서 작성 
- 	
--	주요 결과
-  
-    → 학습데이터 기반 변수선택 & 교차검증을 토대로 Tree ML Classifier 지도학습 결과 출력 완성 (F1기준 95% 기준 달성)
- 	
----
+[2] 냉각/사출 조건 추천 모듈
+• 핵심 알고리즘: K-Means Clustering
+• 주요 결과
+ - 실시간 공정 입력에 대해 K-Means 군집 기반 CoolingTime / InjectionTime 추천
+   - 조건별 표준편차 및 Gaussian Noise 적용으로 추천값 유연성 확보
+ - 실제 vs 추천 조건 일치도 차이 약 3~5% 이내 유지
 
-5.)	Project E - Cogging Motor 기반 조립·병렬공정 불량 탐지 POC
--	수행기간 ( 2024.07 ~ 2024.08 )
--	문제 정의
-  
-    → Cogging Motor 기반 조립/병렬공정 불량탐지에 대한 Tree ML Classifier AI학습 적용 
- 	
--	주요 결과
-  
-    → AI 적용가능 공정(F1 약 75% 이상) / 불가공정 판정 & 향후 활용방안 제시 
- 	
----
+• 🔗 핵심 코드 및 내용 정리: Project_C at main · iureifjdkncd/projects
 
-6.)	Project F - 고속사출기 불량 탐지 POC
--	수행기간 ( 2023.11 ~ 2023.12 )
--	문제 정의
-  
-    → 고속사출기 불량탐지에 대한 Tree ML Classifier AI학습 적용 
- 	
--	주요 결과
-  
-    → 개별 생산단위 (Ex.Cavity & CycleTime) 기준 Raw공정데이터 표준화
- 	
- 	  → 검사(Target) 시점 이동 & 모델 고도화 (F1 기존 약70%에서 82% 달성) 및 활용방안 제시 
- 	
----
+
+Project D: 사출설비 불량 예측 및 TTA 인증
+• 핵심 알고리즘: Tree ML Classifier (e.g., XGBoost, LightGBM)
+• 주요 결과
+ - 학습데이터 기반 변수 선택 및 교차검증을 통한 최적 모델 구성 → F1 점수 약 95% 달성
+ - 특정 사출설비 대상 불량 예측 코드 개발 및 모델 성능 검증 완료
+ - TTA 인증을 위한 품질 예측 기능 개발 및 적용 준비 완료
+• 🔗 핵심 코드 및 내용 정리: Project_D at main · iureifjdkncd/projects
+
+
+
+Project E: Cogging Motor 기반 조립·병렬 공정 불량 탐지 POC
+• 핵심 알고리즘: Tree 기반 ML Classifier (e.g., XGBoost, LightGBM)
+• 주요 결과
+ - Tree 기반 분류 모델을 활용해 조립·병렬 공정의 불량 탐지 AI 모델 개발
+ - 공정별 AI 적용 가능성 검토: 일부 공정은 F1 점수 약 75~91% 수준으로 적용 및 개선 가능성 확인
+ - 적용 불가 공정은 특성 분석 수행 및 원인 진단
+ - 향후 AI 적용 전략 수립 및 운영 방향성 제시
+• 🔗 핵심 코드 및 내용 정리: Project_E at main · iureifjdkncd/projects
+
+
+Project F: 고속 사출기 불량 탐지 POC
+• 핵심 알고리즘: Tree 기반 ML Classifier (e.g., XGBoost, LightGBM)
+• 주요 결과
+ - Tree 기반 분류 모델을 활용한 고속 사출기 불량 탐지 AI 모델 개발
+ - Cavity 및 CycleTime 단위로 Raw 공정 데이터를 표준화하여 예측 정확도 향상
+ - 검사(Target) 시점 재정의 및 Optuna 기반 모델 고도화 적용 → F1 점수 약 70% → 82%로 향상
+• 🔗 핵심 코드 및 내용 정리: Project_F at main · iureifjdkncd/projects
 
 

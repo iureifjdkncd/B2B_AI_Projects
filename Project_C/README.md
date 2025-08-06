@@ -117,7 +117,7 @@ K-등대공장 구축사업 (2023.05 ~ 2025.03)
 
 #### 주요 성과
 
-- Set_Injection/CoolingTime_mean 시간 추천값 vs 실제 세팅값 오차 평균 약 3 ~ 5% 유지
+- Set_Injection/CoolingTime_mean 실시간 추천값 vs 실제 세팅값 오차 평균 약 3 ~ 5% 유지
 
 ---
 

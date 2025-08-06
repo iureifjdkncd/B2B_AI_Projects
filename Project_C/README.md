@@ -99,11 +99,11 @@ K-등대공장 구축사업 (2023.05 ~ 2025.03)
 
 1.) 실시간 데이터 수집 → Production + Environment 매칭
 
-2.) 군집 예측 → 현재 입력값에 대해 K-Means Cluster 예측
+2.) 군집 예측 → 현재 입력값에 대해 K-Means Cluster 예측 & 해당 Cluster를 가진 학습데이터 선택
 
 3.) 추천값 산정
 
-- 군집 내 부분집합 중 현재 Set_Injection/CoolingTime_mean과의 최근사값 선택 
+- 해당 군집의 부분집합 중 현재 Set_Injection/CoolingTime_mean과의 최근사값 선택 
 
 - 표준편차 변수 기반 Set_Injection/CoolingTime_mean ± Std 계산된 범위 중 무작위 추천값 선택
 

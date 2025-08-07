@@ -1,6 +1,6 @@
 ## B2B Projects
 
-#### Project A: 비지도 학습 기반 사출 품질 예측 시스템
+#### Project A: 비지도 학습 기반 사출 품질 예측 시스템 (자율형 공장 구축 사업 / 수행기간: 2023.08 ~ 2025.07)
 - 핵심 알고리즘: K-Means, AutoEncoder, Memory-Augmented AutoEncoder
 - 주요 결과
   

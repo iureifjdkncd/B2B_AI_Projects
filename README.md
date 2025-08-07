@@ -30,7 +30,7 @@
 
 ---
 
-#### Project C: 
+#### Project C: K-등대공장 구축사업 / 수행기간: 2023.05 ~ 2025.03
 #### [1] 사출 설비 품질 예측 시스템
 - 핵심 알고리즘: Tree ML Classifier (e.g., XGBoost, LightGBM), AutoEncoder
 - 주요 결과

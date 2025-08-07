@@ -15,7 +15,7 @@
 
 --- 
 
-#### Project B: 확률적 예측 기반 제당 공정 품질 추론 및 조건 최적화 시스템
+#### Project B: 확률적 예측 기반 제당 공정 품질 추론 및 조건 최적화 시스템 (AI 바우처 사업 / 수행기간: 2024.05 ~ 2025.03)
 - 핵심 알고리즘: Tree ML Quantile Regression(e.g., XGBoost, LightGBM), Monte Carlo Dropout, Bidirectional LSTM/GRU
 - 주요 결과
   

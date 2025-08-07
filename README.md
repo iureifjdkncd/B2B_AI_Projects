@@ -56,7 +56,7 @@
 
 ---
 
-#### Project D: 사출설비 불량 예측 및 TTA 인증
+#### Project D: 사출설비 불량 예측 및 TTA 인증 / 수행기간: 2023.08 ~ 2023.09
 - 핵심 알고리즘: Tree ML Classifier (e.g., XGBoost, LightGBM)
 - 주요 결과
   
@@ -69,7 +69,7 @@
 
 ---
 
-#### Project E: Cogging Motor 기반 조립·병렬 공정 불량 탐지 POC
+#### Project E: Cogging Motor 기반 조립·병렬 공정 불량 탐지 POC / 수행기간: 2024.07 ~ 2024.08
 - 핵심 알고리즘: Tree 기반 ML Classifier (e.g., XGBoost, LightGBM)
 - 주요 결과
   
@@ -84,7 +84,7 @@
 
 ---
 
-#### Project F: 고속 사출기 불량 탐지 POC
+#### Project F: 고속 사출기 불량 탐지 POC / 수행기간: 2023.11 ~ 2023.12
 - 핵심 알고리즘: Tree 기반 ML Classifier (e.g., XGBoost, LightGBM)
 - 주요 결과
   

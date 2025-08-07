@@ -97,7 +97,8 @@
  ---
  
 
-## 기술 스텍
+## 핵심 기술 스텍
+Python / Scikit-Learn / Tensorflow / FastAPI / MongoDB / PostgreSQL 
 
 
 

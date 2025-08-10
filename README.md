@@ -88,7 +88,7 @@
 - 핵심 알고리즘: Tree 기반 ML Classifier (e.g., XGBoost, LightGBM)
 - 주요 결과
   
- - Tree 기반 분류 모델을 활용한 고속 사출기 불량 탐지 AI 모델 개발
+ - Tree ML기반 분류 모델을 활용한 고속 사출기 불량 탐지 AI 모델 개발
  
  - Cavity 및 CycleTime 단위로 Raw 공정 데이터를 표준화하여 예측 정확도 향상
 

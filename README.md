@@ -92,7 +92,7 @@
  
  - Cavity 및 CycleTime 단위로 Raw 공정 데이터를 표준화하여 예측 정확도 향상
 
- - 검사(Target) 시점 재정의 및 Optuna 기반 Tree ML모델 고도화 적용 → F1 점수 약 14%(70% → 82%) 향상
+ - 검사(Target) 시점 재정의 및 Optuna 기반 Tree ML모델 고도화 적용 → F1 점수 약 12%(70% → 82%) 향상
 
  ---
  

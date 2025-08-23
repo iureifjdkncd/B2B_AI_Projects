@@ -1,67 +1,54 @@
-### 디렉토리 구조
-- `1.) ML유량예측모델.ipynb` : 포충1,2탑 ML공급유량 예측
-- `2.) FL_BRIX예측모델.ipynb` : FL_BRIX 농도 예측
-- `3.) 실시간 추론 작업형.ipynb` : 추론 점검용  
-- `main.ipynb` : 추론용 FastAPI
+## 확률적 예측 기반 제당 공정 품질 추론 및 공조건 최적화 시스템
+(S사 제당공정 기업 / AI 바우처 사업 / 2024.05 ~ 2025.03)
 
 ---
+### 디렉토리 구조
+- `1.) ML유량예측모델.ipynb` : 포충 1·2탑 ML 공급유량 예측
+- `2.) FL_BRIX예측모델.ipynb` : MVR 공정 FL_BRIX 농도 예측
+- `3.) 실시간 추론 작업형.ipynb` : 실시간 추론 검증 및 점검
+- `main.ipynb` : FastAPI 기반 추론 서버
 
+---
 ### 사용 환경
 - Python 3.9.13
-- pandas 1.5.3
-- numpy 1.23.1
-- scipy 1.9.1
-- tensorflow 2.7.0
-- scikit-learn 1.2.2
-- pymongo 4.10.1
-- lightgbm 3.3.5
-- xgboost 1.7.4
-- fastapi 0.115.12
-- uvicorn 0.34.3
+- pandas(1.5.3), numpy(1.23.1), scipy(1.9.1), tensorflow(2.7.0), scikit-learn(1.2.2), pymongo(4.10.1), lightgbm(3.3.5), xgboost(1.7.4), fastapi(0.115.12), uvicorn(0.34.3)
 
 ---
-
 ### 문제 정의
-- 1.) 다음 시점(10분 이후) 3개의 제당공정 품질 예측값 제공
-  
-   → [원당-용해-포충-여과-정제-이중효용관-MVR] 공정에서 Target은 포충1,2탑 ML공급유량/MVR공정의 FL_BRIX 농도 
-
-
-- 2.) 총 3개의 사용자 정의 목표값 or 예측 품질 대비 같거나 큰 품질을 가졌던 과거 기반 다변량 공정 입력조건 추천
-
+- 1.) **다음 시점 품질 예측**
+  - 공정 구간: [원당 → 용해 → 포충 → 여과 → 정제 → 이중효용관 → MVR]
+  - 예측 대상: 포충 1·2탑 ML 공급유량, MVR 공정 FL_BRIX 농도
+  - 목표: 10분 후 3개 품질 변수 동시 예측
+- 2.) **목표값 기반 최적 조건 추천**
+  - 사용자 정의 혹은 예측 목표값 대비 **같거나 큰 품질을 가진 과거 조건 탐색 필요**
+  - Data Drift 및 불확실성을 고려한 **적응형 예측 및 추천 로직** 필요
 ---
 
 ### 주요 전처리 
-  - 1.) 시계열 데이터 정의
+- 1.) **시계열 데이터 정의**
+  - ML 접근: Target값을 1시점 뒤로 Shift
+  - DL 접근: (Batch, TimeStamp, Features) 형태의 3D 배열 구성
+  - Train/Test 순차적 분할 (랜덤 셔플 불가)
+- 2.) **부분적 제어**
+  - 점검 기간 데이터 제거
+  - 필요 시 공정 시퀀스 특성에 따라 입력 데이터 시차 지연 적용
+- 3.) **Recipe 데이터 구축**
+  - 조건 탐색을 위해 입력 Feature들의 합산/재배열 기반 **Recipe Data** 생성
 
-    → ML 접근 : Target값을 1시점 뒤로 Shift
-
-    → DL 접근 : (Batch , TimeStamp , Features) 3D 배열
-
-    → Train/Test 순차적 분할 ( Random Shuffle X )
-
-  - 2.) 부분적 제어 
-  
-    → 특정 기간 제거(Ex. 점검기간) & 필요 시 공정 시퀀스 원리에 따라 입력데이터 시차지연 적용
-
-  - 3.) 공정조건 탐색용 Recipe 데이터 구축 ( Ex. 특정 입력값들의 합산, 재배열 )
-    
 ---
 
 ### 학습 프로세스  
 
-   - 1.) ML/DL 점추정 & 확률적 추정 모델 적용
-
-       → ML : Tree계열 모델 (LightGBM,XGBoost,GBM,HistGBM) Quantile Regression
-
-     (학습데이터의 각 Target품질의 변동계수(CV) 기반 Lower/Upper Percentile 정의 )
-
-       → DL : Monte Carlo Dropout 기반 LSTM계열 모델 ( N=100 Simulation 출력 )
-
-     (학습데이터의 각 Target품질의 변동계수(CV) 기반 mean ± K*std에서 K 정의 )
-
-   - 2.) 예측 모델 검증 예시
-
+- 1.) **ML/DL 기반 점추정 & 확률 추정**
+  - ML: LightGBM, XGBoost, GBM, HistGBM → Quantile Regression 적용
+    - 각 Target 품질의 CV(변동계수)에 기반하여 Lower/Upper Percentile 정의
+  - DL: MC Dropout 기반 LSTM 계열 모델(N=100 Simulation)
+    - 예측 분포를 mean ± k·std 형태로 정량화
+    - K → 각 Target 품질의 CV(변동계수)에 기반
+- 2.) **예측 모델 검증**
+  - ML/DL 모델 각각의 추정 결과 비교
+  - 점추정 vs 확률 분포 기반 성능 차이 분석
+- 3.) **ML공급유량1,2 / FL_BRIX 중 예측 결과 예시**
      <img width="695" height="100" alt="화면 캡처 2025-07-29 171327" src="https://github.com/user-attachments/assets/b4bcce22-d918-475d-a890-154436c55572" />
 
 ---

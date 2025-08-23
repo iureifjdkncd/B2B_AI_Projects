@@ -68,7 +68,6 @@ Project A - 비지도 학습 기반 사출 품질 예측 및 최적 세팅 추�
   - 현재 Setting → Cluster 예측 → 해당 Cluster 학습 모델 로드.
   - MinMaxScaler(clip=True)로 스케일링 → 발산 방지.
   - Trained Reconstruction MAE Loss분포의 변동계수(CV) 기반으로 **Threshold 가중치 및 Margin 부여**.
-  <img width="550" height="350" alt="화면 캡처 2025-07-28 135612" src="https://github.com/user-attachments/assets/2d0c0c99-271e-4665-8bee-0b73e0742804" />
 - 3.) **적응형 추론 (학습 이력 없음 or 기존 학습불가 Setting정보)**
   - Euclidean Distance 기반으로 **최근접 Trained Setting 탐색**.
   - 최근접 Cluster의 학습모델을 활용하여 대체 추론 수행.
@@ -77,7 +76,9 @@ Project A - 비지도 학습 기반 사출 품질 예측 및 최적 세팅 추�
   - 학습 당시 고정 Threshold와 Trained Reconstruction MAE Loss Max값 중 큰 값을 선택.
   - Trained mae loss CV(필수 적용) 및 Distance 기반 가중치(**적응형 추론 시**)로 임계값 조정
   - 실시간 test mae loss와 동적 Margin을 설정하여 허용 오차 범위 확장.
-  <img width="550" height="350" alt="화면 캡처 2025-07-31 192107" src="https://github.com/user-attachments/assets/788e8d9c-435c-4cf7-a0c6-433cbdcebc5d" />
+- 5.) **적응형 추론 예시**
+<img width="500" height="350" alt="화면 캡처 2025-07-28 135612" src="https://github.com/user-attachments/assets/2d0c0c99-271e-4665-8bee-0b73e0742804" />
+<img width="500" height="350" alt="화면 캡처 2025-07-31 192107" src="https://github.com/user-attachments/assets/788e8d9c-435c-4cf7-a0c6-433cbdcebc5d" />
 ---
 
 ### 최적 생산 Setting조건 제공용 데이터 구축   

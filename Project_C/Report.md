@@ -140,7 +140,7 @@
 
 - 1.) MongoDB에서 Production + Environment N개 실시간 수집 및 매칭.
 - 2.) 각 사출기별 최근 Working_No 기반 군집 번호 예측.
-- 3.) 군집 내 데이터 중 현재 Set_Injection/CoolingTime_Mean과 최근사값 선택.
+- 3.) Recipe Data 중 현재 Set_Injection/CoolingTime_Mean과 최근사값 선택.
 - 4.) Std 기반 범위(Mean ± Std)에서 무작위 추천값 제공.
 - 5.) **예외처리**
   - 군집 내 데이터 1개 → 해당 Mean Set_Injection/CoolingTime 그대로 사용.

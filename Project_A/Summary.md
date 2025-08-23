@@ -25,6 +25,7 @@
 - 2.) **Unique Setting 조합 및 클러스터링**
   - 다변량 Setting 데이터를 중복 제거 후 고유 조합 추출.
   - K-Means로 Cluster 번호를 부여해 Cluster 단위 학습 데이터셋 구성.
+  - 500개 미만 데이터 학습 제외
 - 3.) **클러스터별 비지도 학습 모델 구성**
   - 샘플 수 기준 모델 선택:
     - 5000개 이상: **Memory-Augmented AutoEncoder**
@@ -42,7 +43,7 @@
   - 현재 Setting → Cluster 예측 → 해당 Cluster 학습 모델 불러오기.
   - MinMaxScaler(clip=True) 적용으로 발산 방지.
   - MAE Loss 분포의 변동계수(CV)를 활용해 **Threshold 가중치 및 Margin 부여**.
-- 3.) **적응형 추론 (학습 이력 없음)**
+- 3.) **적응형 추론 (학습 이력 없음 or 학습불가 Setting)**
   - Euclidean Distance 기반 현재 Setting의 **최근접 Trained Setting 정보 탐색**.
   - 최근접 Cluster 학습 모델로 대체 추론 수행.
   - 기존 Threshold 대신 trained mae loss CV + 거리 기반 **Threshold 가중치 및 Margin 부여**

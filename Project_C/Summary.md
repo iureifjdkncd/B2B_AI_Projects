@@ -1,132 +1,128 @@
-## Project C-1: 사출 설비 품질 예측 시스템 및 공정조건 추천 모듈
-(N사 자동차 부품 제조기업 / K-등대공장 구축사업 / 수행기간: 2023.05 ~ 2025.03)
+## Project C-1 – 사출 설비 품질 예측 시스템
+(N사 자동차 부품 제조기업 / K-등대공장 구축사업 / 2023.05 ~ 2025.03)
 
 ---
 
 #### 프로젝트 개요
 
-- 사출 공정에서 실시간 품질 예측 위한 비지도 학습 기반 불량탐지 시스템 구축 (A)
+- 다수 사출기의 실시간 데이터를 기반으로 비지도 학습 기반 불량 탐지 시스템을 구축.
+- 라벨링 적합성 부족, 데이터 혼재 등으로 인해 지도학습 접근법의 한계를 극복하고, **AutoEncoder** 기반의 비지도 이상 탐지와 **Hybrid Prediction** 구조를 도입.
+- 통계 기반 **Recheck** 알고리즘을 통해 실시간 품질 판정의 안정성 확보.
+
 
 ---
 
-#### A. 품질 예측 시스템 
+#### 문제 정의
+- 1.) **실시간 품질 예측 필요**
+  - 다수 사출기의 데이터로 정상/불량 이진 분류 필요.
+  - 라벨링 부족과 데이터 혼재로 인해 지도학습 기반 접근이 제한적.
+- 2.) **비지도 학습 기반 전환 필요**
+  - 기존: 사출+PLC 데이터 기반 지도학습 → 정확도 저하.
+  - 개선: 사출 단독 데이터 기반 AutoEncoder 중심 비지도 학습 체계 구축.
 
-1.) 문제 정의
-- 다수 사출기의 실시간 데이터 기반 이진 품질 예측(정상/불량)
+---
 
-- Label 적합도 부족 , 데이터 혼재 등 문제 발생으로 인해 지도학습 기반 추론 방식의 한계
-
-- 기존 사출+PLC 데이터에서 → 사출 단독 기반 AutoEncoder 중심 비지도 학습 전환
+#### 핵심 기술 및 알고리즘
+- **Tree 기반 분류기**: RandomForest, XGBoost, LightGBM, GBM, Stacking.
+- **AutoEncoder 기반 비지도 이상 탐지**: Reconstruction Error 기반 판정.
+- **Hybrid Prediction 구조**: Fixed Threshold + Distribution Adaptable Threshold 결합.
+- **KDE 기반 동적 임계값 산출**: MAE Loss 분포의 변동계수(CV) 기반.
+- **Robust Z-Score 기반 Recheck 프로세스**: Fault 예측 샘플에 대한 2차 검증.
 
 ---
 
-2.) 핵심 기술 및 알고리즘
-
-- Tree 기반 분류기 (RandomForest, XGBoost, LightGBM, GBM, Stacking)
-
-- AutoEncoder 기반 비지도 이상 탐지
-
-- AE기반 Hybrid Prediction 구조 (Fixed + Distribution Adaptable)
-
-- KDE 기반 Fault Threshold 동적 계산 및 Robust Z-Score 기반 Anomaly Predicted value Recheck 프로세스
-
----
 
 #### 실시간 추론 프로세스
 
-1.) Fixed Prediction: AE 기반 고정 임계값으로 실시간 단일 샘플 품질 예측
+- 1.) **Fixed Prediction**: AE 기반 고정 임계값을 활용한 단일 샘플 품질 판정.
+- 2.) **Adaptable Prediction**: 다수 샘플의 MAE Loss 분포를 KDE로 정량화하여 임계값 산출.
+- 3.) **Hybrid Prediction**: 데이터 분포 안정성(CV, Skewness, Kurtosis)에 따라 Fixed vs Adaptable 선택, 혹은 혼합 적용.
+- 4.) **Recheck Process**: Fault 판정 데이터에 대해 CP/CPK, Robust Z, Threshold Gap 등을 기반으로 재검토.
+- 5.) **예외 처리**: 작업자가 직접 제어하는 시간대 데이터는 예측 제외 처리.
 
-2.) Adaptable Prediction: 다수 샘플의 test_mae_loss 분포를 KDE로 정량화한 임계값으로 실시간 샘플 품질 예측
-
-3.) Hybrid Prediction: 예측 안정성(CV, Skew, Kurtosis) 기반 Fixed 단일/Fixed & Adaptable 혼합 판단
-
-4.) Recheck Process: (3)에서 Fault로 예측된 데이터에 대해 CP/CPK, Robust Z, Threshold Gap 등 통계 기반 재검토
-
-5.) 작업시간 예외 처리: 작업자 직접 제어 시간대 → 예측 제외 처리
 
 --- 
 
 #### 주요 성과
 
-- 지도학습 기준 초기 실험 데이터 기준 불량 탐지 정확도 약 85 ~ 91%, 실제 현장 적용 시 약 65 ~ 68%로 하락 
-
-- 비지도학습 기반 추론 변경 이후, Hybrid AE추론 구조(Fixed + Adaptable) 적용을 통해 작업자 검사 기반 정확도 약 14% 향상
+- 지도학습 기반 초기 실험: 불량 탐지 정확도 85~91%, 실제 적용 시 **65~68%** 로 하락.
+- 비지도 Hybrid AE 기반으로 전환 후, **작업자 검사 기준 대비 정확도 약 14% 향상.**
 
 ---
 
 #### 기여도
 
-- 품질 예측 전처리, 학습 구조, AE 모델 학습/추론 설계 및 구현
+- 품질 예측을 위한 **데이터 전처리 파이프라인 및 AE 모델 학습/추론 구조 설계.**
+- **Hybrid Prediction 시스템**(Fixed + Adaptable) 설계 및 구현.
+- **Recheck 알고리즘**(통계 기반 2차 검증 프로세스) 직접 개발.
 
-- Hybrid Prediction 시스템 구성 및 Recheck 알고리즘 구현
 
 ---
-
 ---
-## Project C-2: 공정조건 추천 시스템 (사출/냉각 시간)
+## Project C-2 – 평균 사출/냉각시간 공정조건 추천 모듈
 
 ---
 
 #### 프로젝트 개요
 
-- 특정 공정조건을 제공하기 위한 군집 기반 추천 모듈 구축 (B)
+- 사출 공정에서 **Mean Set_InjectionTime / CoolingTime** 추천값을 제공하는 군집 기반 모듈 개발.
+- Production·Environment 데이터의 시점 불일치를 고려하고, 통계 기반의 유연한 추천값 + 예외 대응 로직을 통합.
+- 실시간 입력값을 **Recipe Data**에 업데이트를 자동화하여 **운영 지속 가능성 강화.**
 
 ---
 
 #### 문제 정의
 
-- 현재 Set_InjectionTime / CoolingTime Mean에 대한 실시간 추천값 제공 기반 모니터링 시스템 필요
+- 1.) **실시간 조건 추천 필요**
+  - 현재 공정 세팅값 대비 Set_InjectionTime/CoolingTime Mean에 대한 추천값 제시 필요.
+  - 모니터링 시스템과 연계 가능한 실시간 추천 모듈 필요.
+- 2.) **데이터 불일치 및 예외 대응 필요**
+  - Production과 Environment 데이터 간 시점 불일치 가능.
+  - 군집 매칭 실패, 데이터 부족 상황을 고려한 예외 처리 로직 필요.
 
-- 수집되는 Production과 Environment 데이터 간 시점 불일치 문제 발생 가능성 존재
-
-- 통계 기반 유연한 추천값 + 예외 대응이 가능한 K-Means 기반 클러스터링 추천 시스템 필요
 
 ---
 
 #### 핵심 기술 및 알고리즘
 
-- K-Means 기반 Set_변수 대상 클러스터링 (Production + Environment 기준)
+- **K-Means 기반 클러스터링**: Production + Environment 변수 기반 조건 군집화.
+- **실시간 군집 예측**: 현재 입력값을 군집화하여 동일 Cluster 내 데이터 선택.
+- **추천값 산정 로직**:
+  - 군집 내 최근사 Mean값 기반 추천.
+  - 표준편차 ± Gaussian Noise를 반영하여 유연한 추천 범위 제공.
+- **예외 처리**:
+  - 군집 데이터 1개일 경우 해당 값 그대로 사용.
+  - 추천값이 현재값보다 낮으면 Noise 보정.
+  - 실시간 데이터 조회 실패 시 전체 평균값으로 대체.
 
-- 실시간 군집 예측 + 군집 내 부분집합 중 현재값 대비 최근사 InjectionTime / CoolingTime Mean 선택
-
-- 추천값의 표준편차 변수, Gaussian Noise 기반 범위 산정 및 출력값 유연화
-
-- 예외 케이스: 군집 미탐색, 매칭 불가 등 → 실시간 30개 수집 데이터 대상 평균 대체 추천
 
 ---
 
 #### 실시간 추천 프로세스
 
-1.) 실시간 데이터 수집 → Production + Environment 매칭
-
-2.) 군집 예측 → 현재 입력값에 대해 K-Means Cluster 예측 & 해당 Cluster를 가진 학습데이터 선택
-
-3.) 추천값 산정
-
-- 해당 군집의 부분집합 중 현재 Set_Injection/CoolingTime_mean과의 최근사값 선택 
-
-- 표준편차 변수 기반 Set_Injection/CoolingTime_mean ± Std 계산된 범위 중 무작위 추천값 선택
-
-4.) 예외처리 1: 군집 데이터 1개 → 현재 군집기반 추천값 사용
-
-5.) 예외처리 2: 추천값이 현재값보다 낮은 경우 → Gaussian Noise 보정
-
-6.) 예외처리 3: 실시간 데이터 조회 실패 → 전체 평균으로 대체 추천
+- 1.) 실시간 데이터 수집 → Production + Environment 매칭.
+- 2.) K-Means Cluster 예측 → 해당 군집의 학습데이터 선택.
+- 3.) 추천값 산출 → InjectionTime / CoolingTime Mean의 최근사값 선택, ±Std 범위 내 확률적 랜덤화.
+- 4.) 예외처리 1: 군집 데이터가 1개 → 해당 값 사용.
+- 5.) 예외처리 2: 추천값이 현재값보다 낮을 경우 Gaussian Noise 보정.
+- 6.) 예외처리 3: 데이터 조회 실패 → 전체 평균으로 대체 추천.
+- 7.) Recipe 업데이트: 실시간 입력값을 기존 학습데이터에 자동 누적적
 
 ---
 
 #### 주요 성과
 
-- Set_Injection/CoolingTime_mean 실시간 추천값 vs 실제 세팅값 오차 평균 약 3 ~ 5% 유지
+- 실시간 추천값과 실제 세팅값 간 오차 평균 3~5% 이내 유지.
+- 데이터 불일치 및 예외 상황에서도 안정적으로 추천값 제공.
+
 
 ---
 
 #### 기여도
 
-- 군집기반 사출조건 추천 간편 알고리즘 설계 및 전처리 흐름 구축
+•	**군집 기반 조건 추천 알고리즘 설계** 및 데이터 전처리 로직 구축.
+•	**유연화 로직 및 예외처리 구조 구현**, 실시간 매칭·추천 프로세스 최적화.
+•	실시간 데이터의 Recipe 업데이트로 **지속 가능한 운영 환경** 확보.
 
-- 유연화 로직 구현으로 실시간 매칭/예측/추천 전체 흐름 최적화 및 예외 상황 대응 제공
-
-- 실시간 군집 예측 대상 데이터 → 학습데이터에 업데이트로 추천값 제공, 운영 지속가능성 강화
 
 ---

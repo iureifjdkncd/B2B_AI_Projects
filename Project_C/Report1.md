@@ -60,7 +60,7 @@
   - **Under/OverSampling**으로 클래스 불균형 보정.
   - Tree ML 기반 단일/Stacking Classifier 구축.
 
-     <img width="170" height="85" alt="화면 캡처 2025-08-01 160424" src="https://github.com/user-attachments/assets/e7e630f5-374c-4f26-86a6-787131d5f2b4" />
+     <img width="250" height="150" alt="화면 캡처 2025-08-01 160424" src="https://github.com/user-attachments/assets/e7e630f5-374c-4f26-86a6-787131d5f2b4" />
 
 - 2.) **비지도 방식(변경 후)**
   - 불량 정의의 모호성과 데이터 희소성 문제 → 지도학습 한계.
@@ -95,6 +95,7 @@
 ### 전체 프로세스 예시 
 
 - **실시간 N개 데이터 수집 → 단일/분포 기반 예측 → Hybrid 판정 → Recheck → 최종 품질 판정**
+
 
 
    <img width="578" height="100" alt="화면 캡처 2025-08-01 160940" src="https://github.com/user-attachments/assets/65d47c72-a8ec-417a-bf1b-d1cff7e9587b" />

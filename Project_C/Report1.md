@@ -96,6 +96,7 @@
 
 - **실시간 N개 데이터 수집 → 단일/분포 기반 예측 → Hybrid 판정 → Recheck → 최종 품질 판정**
 
+
    <img width="578" height="100" alt="화면 캡처 2025-08-01 160940" src="https://github.com/user-attachments/assets/65d47c72-a8ec-417a-bf1b-d1cff7e9587b" />
    
 
@@ -166,7 +167,7 @@
 
 - **실시간 데이터 수집 → 군집 기반 추천값 도출 → 범위 유연화 → 예외처리 적용 → 최종 추천값 제공.**
 
-      <img width="400" height="300" alt="화면 캡처 2025-08-01 170838" src="https://github.com/user-attachments/assets/ee32ee33-6405-47e2-8462-fb5f58266b1a" />
+  <img width="400" height="300" alt="화면 캡처 2025-08-01 170838" src="https://github.com/user-attachments/assets/ee32ee33-6405-47e2-8462-fb5f58266b1a" />
 
 ---
 

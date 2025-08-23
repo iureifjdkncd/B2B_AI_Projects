@@ -92,17 +92,17 @@
 
 - 1.) **실시간 100개 데이터 조회 후, 품질의 표준편차·최근 품질값 및 목표값 정의**
 
-     <img width="500" height="100" alt="image" src="https://github.com/user-attachments/assets/fd4fb9a4-0fa0-4370-96f3-9b3b0d02f88b" />
+     <img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/fd4fb9a4-0fa0-4370-96f3-9b3b0d02f88b" />
 
 - 2.) **목표값 기반 예측값 선택 (KDE + Gamma-KDE 보정 반영)**
 
-     <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/6393e371-eb29-4752-a36a-93df0f6be041" />
+     <img width="1000" height="750" alt="image" src="https://github.com/user-attachments/assets/6393e371-eb29-4752-a36a-93df0f6be041" />
 
 - 3.) **최적 과거 공정조건 탐색 및 최종 추천**
 
-     <img width="1000" height="300" alt="image" src="https://github.com/user-attachments/assets/2719e071-d3b5-472c-addc-55d24a743e6c" />
+     <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/2719e071-d3b5-472c-addc-55d24a743e6c" />
 
-     <img width="1000" height="200" alt="image" src="https://github.com/user-attachments/assets/f409db70-77ce-436e-9de7-5c0300569361" />
+     <img width="1000" height="450" alt="image" src="https://github.com/user-attachments/assets/f409db70-77ce-436e-9de7-5c0300569361" />
 
 ---
 

@@ -96,13 +96,13 @@
 
 - **실시간 N개 데이터 수집 → 단일/분포 기반 예측 → Hybrid 판정 → Recheck → 최종 품질 판정**
 
+  <img width="263" height="194" alt="화면 캡처 2025-08-01 160842" src="https://github.com/user-attachments/assets/6f3915d6-f646-4916-8f03-87b5cfa3e2e4" />
 
-
-   <img width="578" height="100" alt="화면 캡처 2025-08-01 160940" src="https://github.com/user-attachments/assets/65d47c72-a8ec-417a-bf1b-d1cff7e9587b" />
+  <img width="578" height="200" alt="화면 캡처 2025-08-01 160940" src="https://github.com/user-attachments/assets/65d47c72-a8ec-417a-bf1b-d1cff7e9587b" />
    
 
-   <img width="263" height="194" alt="화면 캡처 2025-08-01 160842" src="https://github.com/user-attachments/assets/6f3915d6-f646-4916-8f03-87b5cfa3e2e4" />
    
+   <img width="578" height="100" alt="화면 캡처 2025-08-01 161349" src="https://github.com/user-attachments/assets/c399504f-4b9b-489b-a52b-179654b35485" />
 
    <img width="647" height="355" alt="화면 캡처 2025-08-01 160909" src="https://github.com/user-attachments/assets/61cc01c9-c673-46bf-a7b5-6674f5b94556" />
    

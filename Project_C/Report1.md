@@ -116,7 +116,7 @@
 ---
 
 ---
-## C-2. 공정조건 추천 시스템 (평균 사출/냉각 시간)
+## Project C-2 – 공정조건 추천 시스템 (평균 사출/냉각 시간)
 
 ### 디렉토리 구조
 - `1.) K-Means학습.ipynb` : 데이터 수집 & 전처리 & 모델학습
@@ -125,80 +125,46 @@
 ---
 
 ### 문제 정의
-- 1.) 2개 사출기의 Set_InjectionTime_Mean & Set_CoolingTime_Mean 실시간 추천 
+- 2개 사출기의 Set_InjectionTime_Mean & Set_CoolingTime_Mean에 대해 **실시간 추천값 제공** 요.
+- Production & Environment 데이터 간 시점 불일치 발생 가능 → **최근접 시간 매**칭 필요.
+- 군집 기반 추천 + **예외 대응**이 가능한 모듈 필요.
+
 
 ---
 
 ### 주요 전처리 
 
-  - 1.) 데이터 매칭 
-
-     → Production & Environment 수집
-
-     → TimeStamp 1대1 매칭 안되는 관계로 최근접 시간으로 매칭 시도 
+- Production & Environment 데이터 매칭.
+- Timestamp 직접 일치 불가 → 최근접 시점 매칭 방식 적용.
+ 
 
 ---
 ### 학습 프로세스
 
-  - 1.) 매칭데이터 군집학습  
+- Set_변수가 포함된 Production + Environment 데이터 기반 Unique 집합 추출.
+- K-Means Clustering 학습 → Cluster 번호 부여.
+- 학습 모델 및 Numbering 완료 데이터(**Recipe Data**) 저장
 
-     → Set_포함된 Production + Environment 수치형 입력변수 대상으로 Unique 집합 선별
-
-     → K-Means Clustering 모델학습 이후 기존 학습데이터 전체에 Cluster Numbering 정보 부여
-
-     → 학습모델 & Numbering 완료된 학습데이터 저장 
 
 ---
 ### 실시간 추론 프로세스  
 
-   - 1.) 실시간 MongoDB 수집
+- 1.) MongoDB에서 Production + Environment N개 실시간 수집 및 매칭.
+- 2.) 각 사출기별 최근 Working_No 기반 군집 번호 예측.
+- 3.) 군집 내 데이터 중 현재 Set_Injection/CoolingTime_Mean과 최근사값 선택.
+- 4.) Std 기반 범위(Mean ± Std)에서 무작위 추천값 제공.
+- 5.) **예외처리**
+  - 군집 내 데이터 1개 → 해당 Mean Set_Injection/CoolingTime 그대로 사용.
+  - 추천값이 현재값보다 낮을 경우 Gaussian Noise 보정.
+  - MongoDB 수집 문제 발생 시 최근 30개 데이터 평균으로 대체.
+ - 6.) 실시간 데이터를 Recipe Data에 업데이트하여 운영 지속성 확보.
 
-       → Production + Environment N개 실시간 수집 & 최근접 시간 매칭 완료
-
-     
-   - 2.) K-Means 실시간 데이터 예측 
-
-       → 각 사출기별 최근 Working_No 대상으로 Set_포함된 Production + Environment 수치형 정보의 군집번호 예측
-
-       → 학습데이터에서 해당 군집번호에 속하는 부분집합 선택
-
-       → 실시간 마지막 데이터는 기존 학습데이터(Recipe Data)에 지속 업데이트 적용 
-
-
-   - 3.) 실시간 대비 Set Injection/CoolingTime_mean 추천값 제공 
-
-       → 부분집합 개수 다수일 경우 현재 실시간 데이터의 Set_Injection/CoolingTime_mean과 최근사값 선택 
-
-       → Set_Injection/CoolingTime_Std 변수 기반으로 Set_Injection/CoolingTime_Mean ± Std 범위 계산
-
-       → Set_Injection/CoolingTime_Mean 범위 중 무작위값 선택 최종 완료
-
-
-   - 4.) 추천값 예외처리 적용 1 
-
-       → 군집기반 부분집합 개수 1개일 경우 해당 Set_Injection/CoolingTime +Mean값 그대로 출력
-
-   - 5.) 추천값 예외처리 적용 2
-
-       → 최종 추천값 Set_Injection/CoolingTime_Mean값이 현재 실시간 데이터와 같거나 크기 비교 기준 미달 발생 경우
-
-     : Set_Injection/CoolingTime_Mean값에 Gaussian Noise 추가 보정
-     
-
-   - 6.) 추천값 예외처리 적용 3
-
-       → 실시간 MongoDB수집 문제로 인한 Production & Environment 매칭 오류 / Working_No조회 불가  
-
-       → 실시간 30개 Production데이터의 Set_Injection/CoolingTime Mean값들의 평균으로 추천값 대체 
-        
-    
+  
 ---
 
 ### 전체 프로세스 예시 
 
-   - 1.) 실시간 N개 데이터 수집 중 최근 Working_No에 대한 과거조건 기반 CoolingTime/InjectionTime 추천
-
-   - 2.) 현재 Cooling/Injection_Mean Setting값들과 K-Means기반 과거공정조건과 차이 검토 & 생산 참고 
+- **실시간 데이터 수집 → 군집 기반 추천값 도출 → 범위 유연화 → 예외처리 적용 → 최종 추천값 제공.**
 
       <img width="400" height="300" alt="화면 캡처 2025-08-01 170838" src="https://github.com/user-attachments/assets/ee32ee33-6405-47e2-8462-fb5f58266b1a" />
 

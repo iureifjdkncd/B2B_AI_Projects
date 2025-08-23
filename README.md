@@ -1,32 +1,24 @@
-## B2B Projects
+## 📌 B2B Projects
 
-#### Project A:  비지도 학습 기반 사출 품질 예측 및 최적 세팅 추천 시스템 (자율형 공장 구축 사업 / 수행기간: 2023.08 ~ 2025.07)
-- 핵심 알고리즘: K-Means, AutoEncoder, Memory-Augmented AutoEncoder
+### Project A. 비지도 학습 기반 사출 품질 예측 및 최적 세팅 추천 시스템
+(자율형 공장 구축 사업 / 2023.08 ~ 2025.07)
+- 핵심 알고리즘: K-Means, IsolationForest, AutoEncoder, Memory-Augmented AutoEncoder
 - 주요 결과
-  
- - K-Means를 활용해 동일 설비·품목 내에서도 Setting별 데이터 분포를 분리하여 독립된 학습군 구성
-  
- - 비지도학습 기반 실험 불량 탐지 정확도 약 92% → 실제 현장 적용 시 약 73% 
- 
- - 학습 이력 유무 판단 → 유사 학습 모델 기반 대체 추론 + 임계값 가중치 적용 → 불량 탐지 정확도 평균 약 16% 향상
- 
- - 예측 기반 라벨링을 통해 품질 통계 및 최적 조건 도출 → 생산 불량률 약 5% 감소
- 
+  - 동일 설비·품목 내 Setting별 데이터 분포를 K-Means로 분리 → 독립 학습군 구성
+  - 비지도 학습 기반 불량 탐지 정확도: **실험 92% → 현장 73%**
+  - 학습 이력 유무 판별 → 유사 학습 모델 기반 대체 추론 + 임계값 가중치 적용 → **불량탐지 정확도 평균 16% 향상**
+  - 예측 기반 라벨링으로 품질 통계·최적 조건 도출 → **생산 불량률 약 5% 감소**
 
 --- 
-
-#### Project B: 확률적 시계열 예측 기반 제당 공정 품질 추론 및 조건 최적화 시스템 (AI 바우처 사업 / 수행기간: 2024.05 ~ 2025.03)
-- 핵심 알고리즘: Tree ML Quantile Regression(e.g., XGBoost, LightGBM), Monte Carlo Dropout, Bidirectional LSTM/GRU
+### Project B. 확률적 시계열 예측 기반 제당 공정 품질 추론 및 공정조건 최적화 시스템
+(AI 바우처 사업 / 2024.05 ~ 2025.03)
+- 핵심 알고리즘: Tree ML Quantile Regression(XGBoost, LightGBM), Monte Carlo Dropout, BiLSTM/GRU
 - 주요 결과
-  
- - 확률적 예측 접근 → 실험 정확도 95% 이상, 실제 현장 적용 시 약 87~91% 수렴
- 
- - Ensemble & KDE기반 예측분포 정량화 → 품질 정확도 평균 약 5% 향상
- 
- - 예측기반 최적공정조건 추론 (Gamma-KDE & Custom경로탐색 통합) → 목표값 기반 실제 vs 추천 공정조건 일치율 약 85~90% 수준 유지 (vs 작업자 기반 RuleBased)
+  - 확률적 예측 적용 → 실험 정확도 95% 이상, **현장 적용 87~91% 유지**
+  - Ensemble & KDE 기반 분포 정량화 → 예측력 향상 기여
+  - Gamma-KDE + Custom 경로탐색 통합 → 목표값 기반 **공정조건 추천 일치율 85~90%** (vs 작업자 Rule-Based)
+  - **설탕 품질(FL_BRIX 농도) 약 1% 개선**, 실시간 데이터 누적을 통한 **지속 운영 가능성 확보**
 
- - 설탕품질(FL_BRIX농도) 약 1% 향상 및 실시간 데이터 누적 기반 시스템 지속가능성 강화
- 
 
 ---
 

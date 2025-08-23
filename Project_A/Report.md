@@ -71,12 +71,8 @@
 - 3.) **적응형 추론 (학습 이력 없음 or 기존 학습불가 Setting정보)**
   - Euclidean Distance 기반으로 현재 Setting의 **최근접 Trained Setting 탐색**.
   - 최근접 Cluster의 학습모델을 활용하여 대체 추론 수행.
-  - Threshold는 Trained mae loss CV + 거리 기반 가중치를 적용하여 유연성 확보.
-- 4.) **임계값 유연화**
-  - 학습 당시 고정 Threshold와 Trained Reconstruction MAE Loss Max값 중 큰 값을 선택.
-  - Trained mae loss CV(필수 적용) 및 Distance 기반 가중치(**적응형 추론 시**)로 임계값 조정
-  - 동적 Margin을 설정하여 실시간 test mae loss와의 허용 오차 정량화
-- 5.) **적응형 추론 예시 (학습이력 존재O / 존재X)**
+  - Threshold는 Trained mae loss CV + 거리 기반으로 **Threshold 가중치 및 Margin 부여**
+- 4.) **적응형 추론 예시 (학습이력 존재O / 존재X)**
 <img width="500" height="350" alt="화면 캡처 2025-07-28 135612" src="https://github.com/user-attachments/assets/2d0c0c99-271e-4665-8bee-0b73e0742804" />
 <img width="500" height="350" alt="화면 캡처 2025-07-31 192107" src="https://github.com/user-attachments/assets/788e8d9c-435c-4cf7-a0c6-433cbdcebc5d" />
 ---

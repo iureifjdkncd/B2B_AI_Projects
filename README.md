@@ -15,36 +15,31 @@
 - 핵심 알고리즘: Tree ML Quantile Regression(XGBoost, LightGBM), Monte Carlo Dropout, BiLSTM/GRU
 - 주요 결과
   - 확률적 예측 적용 → 실험 정확도 95% 이상, **현장 적용 87~91% 유지**
-  - Ensemble & KDE 기반 분포 정량화 → 예측력 향상 기여
+  - Ensemble & KDE 기반 분포 정량화 → 예측력 집중 향상 기여
   - Gamma-KDE + Custom 경로탐색 통합 → 목표값 기반 **공정조건 추천 일치율 85~90%** (vs 작업자 Rule-Based)
   - **설탕 품질(FL_BRIX 농도) 약 1% 개선**, 실시간 데이터 누적을 통한 **지속 운영 가능성 확보**
 
 
 ---
 
-#### Project C: K-등대공장 구축사업 / 수행기간: 2023.05 ~ 2025.03
+### Project C. K-등대공장 구축 사업
+(2023.05 ~ 2025.03)
+
 #### [1] 사출 설비 품질 예측 시스템
-- 핵심 알고리즘: Tree ML Classifier (e.g., XGBoost, LightGBM), AutoEncoder
+- 핵심 알고리즘: Tree ML Classifier(XGBoost, LightGBM), AutoEncoder
 - 주요 결과
-  
- - 지도학습 기반 실험 불량 탐지 정확도 약 85 ~ 91% → 실제 적용 시 약 65 ~ 68%
+  - 지도학습 기반 불량 탐지 정확도: 실험 85~91% → **현장 65~68%**
+  - 라벨링 한계 극복 → 데이터 재정의 + 비지도 학습 대체 적용
+  - **AutoEncoder**기반 실시간 단일·다중 입력 대응형 **혼합 체계** 구축 → **불량탐지 정확도 14% 향상**
 
- - 기존 라벨링 한계를 반영한 데이터 재정의 및 비지도 학습 대체 
-
- - AutoEncoder 기반 실시간 단일·다수 입력 대응형 혼합 예측 체계 구축 → 불량 탐지 정확도 약 14% 향상
-
-
-#### [2] 냉각/사출시간 조건 추천 모듈
+#### [2] 평균 냉각/사출시간 공정조건 추천 모듈
 - 핵심 알고리즘: K-Means Clustering
 - 주요 결과
-  
- - 실시간 공정 입력에 대해 K-Means 군집 기반 CoolingTime / InjectionTime 추천
- 
- - 조건별 표준편차 및 Gaussian Noise 적용으로 추천값 유연성 확보
-   
- - 실제 vs 추천 조건 일치도 차이 약 3~5% 이내 유지
+  - 실시간 공정 입력 → **K-Means** 군집 기반 CoolingTime/InjectionTime 추천
+  - 조건별 표준편차 + Gaussian Noise 적용 → **추천값 유연성 확보**
+  - 실제 vs 추천 공정조건 **일치도 차이 ±3~5% 이내 유지**
+  - 실시간 데이터 누적 → **지속 가능성 강화**
 
- - 실시간 데이터 누적 기반 시스템 지속가능성 강화
 
 ---
 

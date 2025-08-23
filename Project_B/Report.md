@@ -19,9 +19,10 @@
   - 공정 구간: [원당 → 용해 → 포충 → 여과 → 정제 → 이중효용관 → MVR]
   - 예측 대상: 포충 1·2탑 ML 공급유량, MVR 공정 FL_BRIX 농도
   - 목표: 10분 후 3개 품질 변수 동시 예측
-- 2.) **목표값 기반 최적 조건 추천**
-  - 사용자 정의 혹은 예측 목표값 대비 **같거나 큰 품질을 가진 과거 조건 탐색 필요**
   - Data Drift 및 불확실성을 고려한 **적응형 예측 및 추천 로직** 필요
+- 2.) **목표값 기반 최적 공정조건 추천**
+  - 사용자 정의 혹은 예측 목표값 대비 **같거나 큰 품질을 가진 과거 조건 탐색 필요**
+  
 ---
 
 ### 주요 전처리 
@@ -70,7 +71,8 @@
   - 목표 FL_BRIX농도=76.5 / KDE예측값 = 76.401 / Gamma-KDE예측값 = 76.5
      <img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/64338589-0b0c-44d4-a568-93f511cf2b33" />
 - 4.) **목표값 대비 최적 과거 다변량 공정조건 선택**
-  - (1-3)과정을 통해서 **목표값 → 최근사 예측값**으로 기준 확립
+  - **(1-3)과정을 통해서 목표값 → 최근사 예측값으로 기준 확립**
+    - 목표(예측) 이상의 과거 품질에 해당하는 공정 역추적
   - **Recipe Data 기반 조건 탐색**
     - 전체 Recipe 데이터(**Recipe Full**)와 Min/Max Filtering 데이터(**Recipe Info**) 활용
   - **df_origin / df_cluster 이중 트랙 기반 탐색**
@@ -88,15 +90,15 @@
 
 ### 전체 프로세스 예시 
 
-- 1.) 실시간 100개 데이터 조회 후, 품질의 표준편차·최근 품질값 및 목표값 정의 
+- 1.) **실시간 100개 데이터 조회 후, 품질의 표준편차·최근 품질값 및 목표값 정의**
 
      <img width="500" height="100" alt="image" src="https://github.com/user-attachments/assets/fd4fb9a4-0fa0-4370-96f3-9b3b0d02f88b" />
 
-- 2.) 목표값 기반 예측값 선택 (KDE + Gamma-KDE 보정 반영)
+- 2.) **목표값 기반 예측값 선택 (KDE + Gamma-KDE 보정 반영)**
 
      <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/6393e371-eb29-4752-a36a-93df0f6be041" />
 
-- 3.) 최적 과거 공정조건 탐색 및 최종 추천
+- 3.) **최적 과거 공정조건 탐색 및 최종 추천**
 
      <img width="1000" height="300" alt="image" src="https://github.com/user-attachments/assets/2719e071-d3b5-472c-addc-55d24a743e6c" />
 

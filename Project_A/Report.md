@@ -69,7 +69,7 @@
   - MinMaxScaler(clip=True)로 스케일링 → 발산 방지.
   - Trained Reconstruction MAE Loss분포의 변동계수(CV) 기반으로 **Threshold 가중치 및 Margin 부여**.
 - 3.) **적응형 추론 (학습 이력 없음 or 기존 학습불가 Setting정보)**
-  - Euclidean Distance 기반으로 **최근접 Trained Setting 탐색**.
+  - Euclidean Distance 기반으로 현재 Setting의 **최근접 Trained Setting 탐색**.
   - 최근접 Cluster의 학습모델을 활용하여 대체 추론 수행.
   - Threshold는 Trained mae loss CV + 거리 기반 가중치를 적용하여 유연성 확보.
 - 4.) **임계값 유연화**

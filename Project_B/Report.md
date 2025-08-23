@@ -69,7 +69,7 @@
 - 3.) **목표값 기반 최근사 예측값 추적 예시**
   - 목표 FL_BRIX농도=76.5 / KDE예측값 = 76.401 / Gamma-KDE예측값 = 76.5
      <img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/64338589-0b0c-44d4-a568-93f511cf2b33" />
-- 4.) 목표값 대비 최적 과거 다변량 공정조건 선택
+- 4.) **목표값 대비 최적 과거 다변량 공정조건 선택**
   - (1-3)과정을 통해서 **목표값 → 최근사 예측값**으로 기준 확립
   - **Recipe Data 기반 조건 탐색**
     - 전체 Recipe 데이터(**Recipe Full**)와 Min/Max Filtering 데이터(**Recipe Info**) 활용
@@ -78,30 +78,25 @@
     - 원산지+원당 기준 K-Means Clustering 수행 → 실시간 데이터의 소속 Cluster 탐색
     - 소속 Cluster 내 조건 부족 시, 최근접 Cluster 데이터로 대체
   - **공정조건 경로탐색 로직**
-    - 목표 이상 품질값을 만족하는 과거 공정조건 후보군 생성
+    - 목표 이상 다수 품질값을 동시에 만족하는 과거 공정조건 후보군 생성
     - 후보군 중 최종 **FL_BRIX 농도를 기준**으로 단일 최적 조건 선택
     - 조건 과대/과소 추정을 방지하기 위한 예외 처리 함수 적용
   - **지속가능성 확보**
     - 실시간 입력 데이터는 **Recipe DB**에 실시간 업데이트하여 장기 추론 가능성 강화
 
-  
-
-
-
-
 ---
 
 ### 전체 프로세스 예시 
 
-  - 1.) 실시간 100개 데이터 MongoDB 조회 시 품질들의 표준편차 & 가장 최근 품질값 / 목표 품질값 정의  
+- 1.) 실시간 100개 데이터 조회 후, 품질의 표준편차·최근 품질값 및 목표값 정의 
 
      <img width="500" height="100" alt="image" src="https://github.com/user-attachments/assets/fd4fb9a4-0fa0-4370-96f3-9b3b0d02f88b" />
 
-  - 2.) 목표값 기반 최근사 예측값 정의 
+- 2.) 목표값 기반 예측값 선택 (KDE + Gamma-KDE 보정 반영)
 
      <img width="1000" height="500" alt="image" src="https://github.com/user-attachments/assets/6393e371-eb29-4752-a36a-93df0f6be041" />
 
-  - 3.) 목표값 기반 최근사 예측값 기반 최적 과거 공정조건 탐색
+- 3.) 최적 과거 공정조건 탐색 및 최종 추천
 
      <img width="1000" height="300" alt="image" src="https://github.com/user-attachments/assets/2719e071-d3b5-472c-addc-55d24a743e6c" />
 

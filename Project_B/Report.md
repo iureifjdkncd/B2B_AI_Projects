@@ -53,35 +53,21 @@
 
 ---
 
-### 실시간 추론 프로세스 1 ( 최초 예측값 Ensemble )
-
-  - 1.) 실시간 MongoDB 데이터 수집
-
-       → 공정 일련 프로세스에 대해서 100개씩 조회 & 용도에 맞게 데이터 형태 정의  
-
-  - 2.) 각 학습모델 기반 품질 예측값 KDE Ensemble & 품질 범위 정량화 (Data Drift Robustness 목표)
-
-       → 점추정/확률 추정 결과들의 Min/Mean/Max 특징들로 KDE 모수 지정 & 분포 생성 및 품질 예측 정확도 측정용 Final Mean값 별도 추론
-
-       → KDE분포의 변동계수(Coefficient of Variance) 기반으로 Upper/Lower Boundary 지정 
-
----
-
-### 실시간 추론 프로세스 2  ( 목표값 대비 최근사 예측값 선택 )
-
-  - 1.) 총 3개의 목표 품질 (예측 or 사용자 정의) ML공급유량1,2 & FL_BRIX 농도 정의
-
-  - 2.) 각 KDE예측 분포에서 목표 품질 대비 크거나 같은 값 1차 선택 
-
-  - 3.) Gamma-KDE 기반 예측값 2차 보정
-
-       → 1차 KDE예측값과 실시간 100개 품질값의 Std를 Gamma분포의 모수로 지정 & KDE분포 생성
-
-       → Gamma-KDE분포의 변동계수(Coefficient of Variance) 기반으로 Upper/Lower Boundary 지정
-
-       → 각 Gamma-KDE예측 분포에서 목표 품질 대비 크거나 같은 값 2차 선택  
-
-  - 4.) Ex.) 목표 FL_BRIX농도=76.5 / KDE예측값 = 76.401 / Gamma-KDE예측값 = 76.5
+### 실시간 추론 프로세스 
+- 1.) **최초 예측값 Ensemble**
+  - MongoDB에서 실시간 데이터(최근 100개) 조회 및 전처리
+  - 각 ML/DL 모델의 예측값을 수집 후 KDE 기반 Ensemble 수행
+  - KDE 분포의 변동계수(CV) 기반으로 Upper/Lower Boundary 설정
+  - 최종 평균 추정치(Final Mean)를 산출하여 Data Drift에 강건한 예측 확보
+- 2.) **목표값 대비 예측값 보정**
+  - 사용자 정의 or 예측 목표값 입력 (ML 공급유량 1·2, FL_BRIX 농도)
+  - 각 KDE 분포에서 목표 이상 값 1차 선택
+  - **Gamma-KDE 보정** 수행:
+    - 최근 100개 각 Target 실측값의 표준편차로 Gamma 분포 파라미터 추정
+    - KDE + Gamma-KDE 이중 보정을 통해 변동성 반영
+  - Gamma-KDE 기반 분포에서 목표 이상 값 최종 선택
+- 3.) **목표값 기반 최근사 예측값 추적 예시**
+  - 목표 FL_BRIX농도=76.5 / KDE예측값 = 76.401 / Gamma-KDE예측값 = 76.5
 
      <img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/64338589-0b0c-44d4-a568-93f511cf2b33" />
 

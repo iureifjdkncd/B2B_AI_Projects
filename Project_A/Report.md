@@ -75,7 +75,7 @@
 - 4.) **임계값 유연화**
   - 학습 당시 고정 Threshold와 Trained Reconstruction MAE Loss Max값 중 큰 값을 선택.
   - Trained mae loss CV(필수 적용) 및 Distance 기반 가중치(**적응형 추론 시**)로 임계값 조정
-  - 실시간 test mae loss와 동적 Margin을 설정하여 허용 오차 범위 확장.
+  - 동적 Margin을 설정하여 실시간 test mae loss와의 허용 오차 정량화
 - 5.) **적응형 추론 예시 (학습이력 존재O / 존재X)**
 <img width="500" height="350" alt="화면 캡처 2025-07-28 135612" src="https://github.com/user-attachments/assets/2d0c0c99-271e-4665-8bee-0b73e0742804" />
 <img width="500" height="350" alt="화면 캡처 2025-07-31 192107" src="https://github.com/user-attachments/assets/788e8d9c-435c-4cf7-a0c6-433cbdcebc5d" />

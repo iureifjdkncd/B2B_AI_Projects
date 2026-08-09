@@ -1,6 +1,6 @@
 ## 📌 B2B AI Projects (2023.03 ~ 2025.09)
 
-### Project A. 비지도 학습 기반 사출 품질 예측 및 최적 세팅 추천 시스템
+### Project A. 자동차 금형 사출공정 품질예측 및 공정최적화 시스템 구축 
 (자율형 공장 구축 사업 / 2023.08 ~ 2025.07)
 - 핵심 알고리즘: **K-Means, IsolationForest, AutoEncoder, Memory-Augmented AutoEncoder**
 - 주요 결과
@@ -10,7 +10,7 @@
   - 예측 기반 라벨링으로 품질 통계·최적 조건 도출 → **생산 불량률 약 5% 감소**
 
 --- 
-### Project B. 확률적 시계열 예측 기반 제당 공정 품질 추론 및 공정조건 최적화 시스템
+### Project B. 제당공정 품질예측 및 공정최적화 시스템 구축 
 (AI 바우처 사업 / 2024.05 ~ 2025.03)
 - 핵심 알고리즘: **Tree ML Quantile Regression(XGBoost, LightGBM), Monte Carlo Dropout, BiLSTM/GRU**
 - 주요 결과
@@ -22,8 +22,8 @@
 
 ---
 
-### Project C. K-등대공장 구축 사업
-(2023.05 ~ 2025.03)
+### Project C. 자동차 정밀주조 사출공정 품질예측 및 공정최적화 시스템 구축  
+(K-등대공장 구축 사업, 2023.05 ~ 2025.03)
 
 #### [1] 사출 설비 품질 예측 시스템
 - 핵심 알고리즘: **Tree ML Classifier(XGBoost, LightGBM...), AutoEncoder**
@@ -43,8 +43,8 @@
 
 ---
 
-### Project D. 사출 설비 불량 예측 및 TTA 인증 대응
-(2023.08 ~ 2023.09)
+### Project D. 자동차 도어 사출 설비 불량 예측모델 개발 
+(TTA 인증사업 2023.08-2023.09)
 - 핵심 알고리즘: **Tree ML Classifier(XGBoost, LightGBM...)**
 - 주요 결과
   - 변수 선택 + 교차검증으로 최적 **Tree ML** 모델 구성 → **F1 95% 이상 달성**
@@ -53,8 +53,8 @@
 
 ---
 
-### Project E. Cogging Motor 기반 조립·병렬 공정 불량 탐지 PoC
-(2024.07 ~ 2024.08)
+### Project E. Cogging Motor 조립·병렬 공정 불량탐지 
+(SI사업 POC, 2024.07 ~ 2024.08)
 - 핵심 알고리즘: **Tree ML Classifier(XGBoost, LightGBM...)**
 - 주요 결과
   - **Tree ML** 기반 불량 탐지 모델 개발, 조립·병렬 공정에 적용
@@ -62,8 +62,8 @@
   - 적용 불가 공정은 원인 분석 및 개선 방향 제시
   - **AI 도입 전략** 및 운영 로드맵 수립
 ---
-### Project F. 고속 사출기 불량 탐지 PoC
-(2023.11 ~ 2023.12)
+### Project F. 플라스틱 단자 고속사출기 불량탐지 AI모델 개발 
+(SI사업 POC, 2023.11 ~ 2023.12)
 - 핵심 알고리즘: **Tree ML Classifier(XGBoost, LightGBM...)**
 - 주요 결과
   - 고속 사출기 전용 불량 탐지 모델 개발

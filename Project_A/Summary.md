@@ -1,4 +1,4 @@
-## Project A - 비지도 학습 기반 사출 품질 예측 및 최적 세팅 추천 시스템
+## Project A - 자동차 금형 사출공정 품질예측 및 공정최적화 시스템 구축 
 (A사 자동차 부품 제조기업 / 자율형 공장 구축 사업 / 2023.08 ~ 2025.07)
 
 --- 
@@ -13,17 +13,17 @@
 - 1.) **1:1 라벨링 부재**
   - PostgreSQL 기반 Raw 사출 데이터는 Lot(일 단위) 생산량 단위로만 Good/Bad 품질이 기록됨.
   - 개별 샘플 단위의 품질 라벨이 없어 샘플 단위 품질 판정 불가.
-- 2.) **Setting 조합별 데이터 분포 상이**
-  - 동일 Maker·Facility·Item 조합이라도 생산은 다른 Setting(공정 조건)으로 운영.
-  - Setting 조합에 따라 입력 분포가 크게 달라 **독립 학습군 구성 필요**.
+- 2.) **공정조건 조합별 데이터 분포 상이**
+  - 동일 Maker·Facility·Item 조합이라도 생산은 다른 공정조건으로 운영.
+  - 공정조건 조합에 따라 입력 분포가 크게 달라 **독립 학습군 구성 필요**.
 --- 
 
 ### 주요 전처리 및 비지도 학습 방법
 - 1.) **Lot 단위 품질 통계 기반 데이터 정의**
   - Lot별 불량률(defect_rate) 산출.
   - 총 불량률 1% 미만 데이터는 학습용, 그 이상은 검증용으로 분리 → 과적합 방지.
-- 2.) **Unique Setting 조합 및 클러스터링**
-  - 다변량 Setting 데이터를 중복 제거 후 고유 조합 추출.
+- 2.) **Unique 공정조건 조합 및 클러스터링**
+  - 다변량 공정조건 데이터를 중복 제거 후 고유 조합 추출.
   - K-Means로 Cluster 번호를 부여해 Cluster 단위 학습 데이터셋 구성.
   - 500개 미만 데이터 학습 제외
 - 3.) **클러스터별 비지도 학습 모델 구성**
@@ -40,11 +40,11 @@
   - 결측치(품목명, 세팅, 생산량 등)는 Forward/Backward/Mean/Mode Fill로 보완.
   - 예측 불가 조건은 사전 예외 처리 → 시스템 중단 방지.
 - 2.) **기본 추론 (학습 이력 존재)**
-  - 현재 Setting → Cluster 예측 → 해당 Cluster 학습 모델 불러오기.
+  - 현재 공정조건 → Cluster 예측 → 해당 Cluster 학습 모델 불러오기.
   - MinMaxScaler(clip=True) 적용으로 발산 방지.
   - MAE Loss 분포의 변동계수(CV)를 활용해 **Threshold 가중치 및 Margin 부여**.
-- 3.) **적응형 추론 (학습 이력 없음 or 학습불가 Setting)**
-  - Euclidean Distance 기반 현재 Setting의 **최근접 Trained Setting 정보 탐색**.
+- 3.) **적응형 추론 (학습 이력 없음 or 학습불가 공정조건)**
+  - Euclidean Distance 기반 현재 공정조건의 **최근접 Trained 공정조건 정보 탐색**.
   - 최근접 Cluster 학습 모델로 대체 추론 수행.
   - 기존 Threshold 대신 trained mae loss CV + 거리 기반 **Threshold 가중치 및 Margin 부여**
 

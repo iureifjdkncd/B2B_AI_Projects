@@ -1,4 +1,4 @@
-## Project E – Cogging Motor 기반 조립·병렬 공정 불량 탐지 POC
+## Project E – Cogging Motor 조립·병렬 공정 불량탐지 
 (M사 모터 제조기업 / POC 프로젝트 / 2024.07 ~ 2024.08)
 
 ### 디렉토리 구조
